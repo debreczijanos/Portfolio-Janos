@@ -1,1 +1,27 @@
-<p>header works!</p>
+<header>
+    <nav>
+        <div class="logo">
+            <img src="assets/images/logo/logoBlue.png" alt="logo">
+        </div>
+        <div class="nav-content">
+            <ul>
+                <li><a routerLink="/home" routerLinkActive="active">About me</a></li>
+                <li><a routerLink="/about" routerLinkActive="active">Skills</a></li>
+                <li><a routerLink="/projekts" routerLinkActive="active">Projects</a></li>
+                <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+            </ul>
+        </div>
+        <div class="language-toggle">
+            <span class="lang-label" [class.active]="currentLang === 'en'"
+                [class.show-img-frame]="hoveredLang === 'en' && currentLang !== 'en'" (mouseenter)="hoveredLang = 'en'"
+                (mouseleave)="hoveredLang = null" (click)="setLanguage('en')">EN</span>
+            <label class="switch">
+                <input type="checkbox" (change)="toggleLanguage()" [checked]="currentLang === 'de'">
+                <span class="slider round"></span>
+            </label>
+            <span class="lang-label" [class.active]="currentLang === 'de'"
+                [class.show-img-frame]="hoveredLang === 'de' && currentLang !== 'de'" (mouseenter)="hoveredLang = 'de'"
+                (mouseleave)="hoveredLang = null" (click)="setLanguage('de')">DE</span>
+        </div>
+    </nav>
+</header>

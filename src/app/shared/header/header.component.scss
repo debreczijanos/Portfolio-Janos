@@ -1,0 +1,213 @@
+.language-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+
+  .lang-label {
+    position: relative;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .lang-label::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background-image: url('/assets/images/hoverImg/toggleLanguage.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    z-index: -1;
+    clip-path: circle(0% at 0% 0%);
+    transition: opacity 0.3s;
+    pointer-events: none;
+    transform: rotate(-180deg);
+  }
+
+  .show-img-frame::before {
+    opacity: 1;
+    animation: circle-reveal 0.4s cubic-bezier(0.4,0,0.2,1) forwards;
+    transform: rotate(-180deg);
+  }
+
+  span {
+    cursor: pointer;
+    transition: opacity 0.3s;
+    position: relative;
+    padding: 4px 8px;
+    z-index: 2;
+
+    &:hover:not(.active)::before {
+      opacity: 1;
+      z-index: 0;
+    }
+
+    &.active {
+      color: #f08463;
+      cursor: default;
+      opacity: 1;
+    }
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 12px;
+
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 34px;
+
+      &::before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 0px;
+        top: -2px;
+        bottom: 0px;
+        background-color: #3355FF;
+        transition: 0.4s;
+        border-radius: 50%;
+        box-sizing: border-box;
+      }
+    }
+
+    input:checked + .slider {
+      background-color: #f08463;
+    }
+
+    input:checked + .slider::before {
+      transform: translateX(18px);
+    }
+  }
+}
+
+@keyframes circle-reveal {
+  from {
+    clip-path: circle(0% at 100% 100%);
+    opacity: 1;
+  }
+  to {
+    clip-path: circle(150% at 100% 100%);
+    opacity: 1;
+  }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: transparent;
+}
+
+.nav-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    gap: 40px;
+    width: 100%;
+    max-width: 600px;
+
+    li {
+      font-size: 18px;
+      font-weight: 700;
+      color: black;
+    //   color: #F8F9FA;
+      cursor: pointer;
+      transition: color 0.3s;
+      position: relative;
+
+
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -20px;
+        right: -20px;
+        bottom: -10px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 1;
+        z-index: 0;
+        pointer-events: none;
+        transition: clip-path 0.3s linear, opacity 0.3s;
+      }
+
+      // 1. Element: About me (von oben nach unten)
+      &:first-child::before {
+        background-image: url('/assets/images/hoverImg/aboutMeHover.png');
+        clip-path: inset(0 0 100% 0);
+      }
+      &:first-child:hover::before {
+        clip-path: inset(0 0 0 0);
+      }
+
+      // 2. Element: Skills (von links nach rechts)
+      &:nth-child(2)::before {
+        background-image: url('/assets/images/hoverImg/skillsHover.png');
+        clip-path: inset(0 100% 0 0);
+      }
+      &:nth-child(2):hover::before {
+        clip-path: inset(0 0 0 0);
+      }
+
+      // 3. Element: Projects (von links nach rechts)
+      &:nth-child(3)::before {
+        background-image: url('/assets/images/hoverImg/projectsHover.png');
+        clip-path: inset(0 100% 0 0);
+      }
+      &:nth-child(3):hover::before {
+        clip-path: inset(0 0 0 0);
+      }
+
+      // 4. Element: Contact (von links nach rechts)
+      &:nth-child(4)::before {
+        background-image: url('/assets/images/hoverImg/contactHover.png');
+        clip-path: inset(0 100% 0 0);
+      }
+      &:nth-child(4):hover::before {
+        clip-path: inset(0 0 0 0);
+      }
+    } 
+  }}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
