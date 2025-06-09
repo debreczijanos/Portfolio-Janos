@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
@@ -10,15 +11,18 @@ export class HeaderComponent {
   currentLang: 'en' | 'de' = 'de';
   hoveredLang: 'en' | 'de' | null = null;
 
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang(this.currentLang);
+    this.translate.use(this.currentLang);
+  }
+
   toggleLanguage() {
     this.currentLang = this.currentLang === 'en' ? 'de' : 'en';
-    // optional: Sprache global setzen, z. B. via ngx-translate oder i18n
-    console.log('Sprache gewechselt zu:', this.currentLang);
+    this.translate.use(this.currentLang);
   }
 
   setLanguage(lang: 'en' | 'de') {
     this.currentLang = lang;
-    // optional: Sprache global setzen
-    console.log('Sprache gewechselt zu:', this.currentLang);
+    this.translate.use(this.currentLang);
   }
 }
