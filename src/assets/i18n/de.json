@@ -2,5 +2,11 @@
     "ABOUT_ME": "Über mich",
     "SKILLS": "Fähigkeiten",
     "PROJECTS": "Projekte",
-    "CONTACT": "Kontakt"
+    "CONTACT": "Kontakt",
+    "HERO_TITLE": "Frontend",
+    "HERO_TITLE2": "ENTWICKLER",
+    "HERO_TAG": "Hallo Welt",
+    "HERO_TAG_HOVER": "Ich bin Debreczi János",
+    "HERO_CTA": "Kontaktiere mich"
+
   }
