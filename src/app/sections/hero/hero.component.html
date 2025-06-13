@@ -1,14 +1,31 @@
 <section class="hero">
     <div class="hero-content">
-        <button class="hero-tag">
-            <span class="hero-tag-text hero-tag-text-default">{{ 'HERO_TAG' | translate }}</span>
-            <span class="hero-tag-text hero-tag-text-hover">{{ 'HERO_TAG_HOVER' | translate }}</span>
-            <span class="hero-tag-icon">👋</span>
-        </button>
-
+        <div class="hero-tag-wrapper">
+            <span class="hero-tag-icon">
+                <img src="/assets/images/icons/wavingHand.svg" alt="waving hand" />
+            </span>
+            <button class="hero-tag">
+                <span class="hero-tag-text hero-tag-text-default">{{ 'HERO_TAG' | translate }}</span>
+                <span class="hero-tag-text hero-tag-text-hover">{{ 'HERO_TAG_HOVER' | translate }}</span>
+            </button>
+        </div>
         <div class="hero-title-main">
-            <h1><span class="light">{{ 'HERO_TITLE' | translate }}</span> <span class="bold">{{ 'HERO_TITLE2' |
-                    translate }}</span></h1>
+            <h1>
+                <span class="light">
+                    <ng-container *ngFor="let char of ('HERO_TITLE' | translate).split('')">
+                        <span class="char" [attr.data-char]="char"
+                            [attr.data-flip]="char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()">
+                        </span>
+                    </ng-container>
+                </span>
+                <span class="bold">
+                    <ng-container *ngFor="let char of ('HERO_TITLE2' | translate).split('')">
+                        <span class="char" [attr.data-char]="char"
+                            [attr.data-flip]="char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()">
+                        </span>
+                    </ng-container>
+                </span>
+            </h1>
         </div>
 
         <div class="hero-cta-container">
@@ -22,8 +39,20 @@
                 <img src="/assets/images/profil.jpeg" alt="Portrait of János" />
             </div>
             <div class="polaroid-caption">
-                János :)
+                János <span class="emoji"> </span>
             </div>
         </div>
+    </div>
+
+    <div class="hero-socials-container">
+        <a href="#" class="hero-social-link">
+            <img src="/assets/images/icons/github.png" alt="GitHub" />
+        </a>
+        <a href="#" class="hero-social-link">
+            <img src="/assets/images/icons/Linkedin.png" alt="LinkedIn" />
+        </a>
+        <a href="#" class="hero-social-link">
+            <img src="/assets/images/icons/mail.png" alt="Mail" />
+        </a>
     </div>
 </section>
