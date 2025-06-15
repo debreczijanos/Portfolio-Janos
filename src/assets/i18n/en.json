@@ -1,11 +1,25 @@
 {
+  "header": {
     "ABOUT_ME": "About me",
     "SKILLS": "Skills",
     "PROJECTS": "Projects",
-    "CONTACT": "Contact",
+    "CONTACT": "Contact"
+  },
+  "hero": {
     "HERO_TITLE": "Frontend",
     "HERO_TITLE2": "DEVELOPER",
     "HERO_TAG": "Hello world",
     "HERO_TAG_HOVER": "I'm Debreczi János",
     "HERO_CTA": "Get in Touch"
+  },
+  "aboutMe": {
+    "ABOUT_ME_CTA": "Let's talk",
+    "BASED_IN": "Based in Ulm",
+    "OPEN_TO_RELOCATE": "Open to relocate",
+    "OPEN_TO_REMOTE": "Open to remote", 
+    "WHO_AM_I": "WHO'S JÁNOS?",
+    "WHO_AM_I_TEXT": "I am János – a passionate frontend developer with a keen eye for detail and a love for clean code. I enjoy turning ideas into interactive and visually appealing web experiences.",
+    "SKILLS_TEXT": "Whether it's a design system or a complex app, I blend functionality with form.",
+    "CONTACT_TEXT": "Let's collaborate and build something remarkable together!"
+  }
   }

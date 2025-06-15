@@ -1,0 +1,44 @@
+<section class="about-me-section">
+
+    <div class="location-labels">
+        <div class="label-item based-in-ulm">
+            <img src="assets/images/aboutMe/based-in-ulm.png" alt="Based in Ulm background" />
+            <div class="label-text">
+                <img src="assets/images/icons/location.svg" alt="Location Icon" />
+                <span>{{ 'aboutMe.BASED_IN' | translate }}</span>
+            </div>
+        </div>
+        <div class="label-item open-to-relocate">
+            <img src="assets/images/aboutMe/open-to-relocate.png" alt="Open to relocate background" />
+            <div class="label-text">
+                <img src="assets/images/icons/relocate.svg" alt="Relocate Icon" />
+                <span>{{ 'aboutMe.OPEN_TO_RELOCATE' | translate }}</span>
+            </div>
+        </div>
+        <div class="label-item open-to-remote">
+            <img src="assets/images/aboutMe/open-to-remote.png" alt="Open to work remote background" />
+            <div class="label-text">
+                <img src="assets/images/icons/remote.svg" alt="Remote Icon" />
+                <span>{{ 'aboutMe.OPEN_TO_REMOTE' | translate }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-me-container">
+        <span>{{ 'aboutMe.WHO_AM_I' | translate }}</span>
+        <h1 class="section-title">{{ 'header.ABOUT_ME' | translate }}</h1>
+        <div class="section-line" id="sectionLine">
+            <!-- <img src="/assets/images/aboutMe/line.svg" alt="animated line" /> -->
+        </div>
+        <div class="about-me-content">
+            <p>{{ 'aboutMe.WHO_AM_I_TEXT' | translate }}</p>
+            <p>{{ 'aboutMe.SKILLS_TEXT' | translate }}</p>
+            <ng-container><br /></ng-container>
+            <p>{{ 'aboutMe.CONTACT_TEXT' | translate }}</p>
+        </div>
+        <div class="about-me-cta-container">
+            <button class="about-me-cta">{{ 'aboutMe.ABOUT_ME_CTA' | translate }}</button>
+        </div>
+
+    </div>
+</section>
