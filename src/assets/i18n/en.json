@@ -21,5 +21,10 @@
     "WHO_AM_I_TEXT": "I am János – a passionate frontend developer with a keen eye for detail and a love for clean code. I enjoy turning ideas into interactive and visually appealing web experiences.",
     "SKILLS_TEXT": "Whether it's a design system or a complex app, I blend functionality with form.",
     "CONTACT_TEXT": "Let's collaborate and build something remarkable together!"
+  },
+  "skills": {
+    "MY_STACK": "My stack",
+    "SKILLS_TITLE": "Skill set",
+    "SKILLS_DESCRIPTION": "I have a diverse skill set that allows me to tackle various challenges in frontend development. Here are some of the key areas I specialize in:"
   }
-  }
+}

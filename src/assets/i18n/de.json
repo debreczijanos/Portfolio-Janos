@@ -21,5 +21,10 @@
     "WHO_AM_I_TEXT": "Ich bin János – leidenschaftlicher Frontend-Entwickler mit einem Blick fürs Detail und einem Herz für sauberen Code. Ich liebe es, Ideen in interaktive und ästhetisch ansprechende Web-Erlebnisse zu verwandeln.",
     "SKILLS_TEXT": "Ob Design-System oder komplexe App: Ich verbinde Funktion mit Form.",
     "CONTACT_TEXT": "Lasst uns zusammenarbeiten und etwas Bemerkenswertes schaffen!"
+  },
+  "skills": {
+    "MY_STACK": "Mein Stack",
+    "SKILLS_TITLE": "Fähigkeiten",
+    "SKILLS_DESCRIPTION": "Ich verfüge über ein breites Spektrum an Fähigkeiten, die es mir ermöglichen, verschiedene Herausforderungen in der Frontend-Entwicklung zu meistern. Hier sind einige der Schlüsselbereiche, auf die ich mich spezialisiert habe:"
   }
 }
