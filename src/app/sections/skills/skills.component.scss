@@ -1,87 +1,258 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
 .skills-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1440px;
-    // height: 100vh;
-    margin: 0 auto;
-    padding: 144px 12px;
-    background-image: url('/assets/images/ace2.png') ;
-    background-size: cover;
-    background-position: center bottom;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1440px;
+  // height: 100vh;
+  margin: 0 auto;
+  padding: 144px 12px;
+  background-image: url("/assets/images/ace2.png");
+  background-size: cover;
+  background-position: center bottom;
   background-repeat: no-repeat;
 }
 
 .skills-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 24px;
-    // width: 100%;
-    max-width: 1440px;
-    margin-bottom: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  max-width: 1440px;
+  justify-content: flex-start;
 
-   
-    .skills-header-content{
+  .skills-header-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
-   
+
+    span {
+      font-size: 20px;
+      font-weight: 500;
+      color: $color-text-light;
+      font-family: "Bricolage Grotesque", sans-serif;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    h2 {
+      font-size: 64px;
+      font-weight: 700;
+      font-family: "Bricolage Grotesque", sans-serif;
+      color: $color-text-light;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skills-line {
+      position: relative;
+      height: 200px;
+      width: 370px;
+      top: -150px;
+      overflow: hidden;
+      z-index: 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: url("../../../assets/images/skills/circle.svg") no-repeat
+          left center;
+        background-size: contain;
+        // transform: scaleX(0);
+        // transform-origin: center;
+        // transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        // z-index: 2;
+        mask-image: radial-gradient(circle at center, black 0%, black 0%);
+        mask-size: 0% 0%;
+        mask-repeat: no-repeat;
+        transition: mask-size 0.8s ease-out;
+        // z-index: 2;
+      }
+
+      &.active::after {
+        // transform: scaleX(1);
+        mask-size: 120% 120%;
+      }
+    }
   }
-  .skills-description{
-    background-image: url('/assets/images/skills/skillsPappel.png');
-    background-size: contain;
+  .skills-description {
+    background-image: url("/assets/images/skills/skillsPappel.png");
+    background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-   padding: 30px 32px;
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.5;
-  max-width: 600px;
-  color: #000; // je nach Bild evtl. anpassen
 
+    padding: 36px 6px; // mehr Platz, damit Text nicht an Kanten klebt
+    text-align: center;
+    font-size: $font-size-md;
+    font-weight: 400;
+    font-family: "Bricolage Grotesque", sans-serif;
+    line-height: 140%;
+    color: $color-text;
+
+    max-width: 656px; // begrenzt Breite auf Hintergrundgröße
+    // margin: 0 auto; // zentriert im Container
+  }
 }
- }
 
- .skills-content{
-    display: flex;
-    
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
+.skills-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  gap: 40px;
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px;
     width: 100%;
+    max-width: 640px;
+    justify-items: center;
+    align-items: start;
 
     .skill-item {
       display: flex;
       flex-direction: column;
+      gap: 4px;
       align-items: center;
-      gap: 8px;
-      width: 200px;
-      height: 200px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease-in-out;
+      justify-content: flex-start;
+      text-align: center;
 
-      &:hover {
-        transform: translateY(-10px);
+      img {
+        width: 72px;
+        height: 72px;
+        filter: grayscale(100%);
+        transition: all 0.3s ease;
       }
 
-      .skill-icon {
-        width: 64px;
-        height: 64px;
-        background-size: cover;
-        background-position: center;
+      &:hover img {
+        filter: grayscale(0%);
+        transform: scale(0.7);
       }
 
-      .skill-name {
-        font-size: 18px;
-        font-weight: bold;
-        text-align: center;
+      span {
+        font-size: $font-size-md;
+        font-weight: 400;
+        font-family: "Bricolage Grotesque", sans-serif;
+        color: $color-text-light;
+        line-height: 120%;
       }
     }
   }
- 
+  .skills-sticker-wrapper {
+    perspective: 1000px;
+    width: 200px;
+    height: 200px;
+    transform: rotate(8deg);
+  }
+
+  .skills-sticker-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .skills-sticker-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 200px;
+    z-index: 3;
+    transform-origin: top right;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    transition: clip-path 0.4s ease;
+  }
+
+  .skills-sticker-inner:hover .skills-sticker-front {
+    clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
+  }
+  .sticker-front {
+    height: 200px;
+    width: 200px;
+    display: block;
+  }
+  .sticker-arrow {
+    position: absolute;
+    top: 40px;
+    left: 70px;
+    // width: 36px;
+    height: auto;
+  }
+  .sticker-text {
+    position: absolute;
+    bottom: 16px;
+    font-size: 40px;
+    font-weight: 400;
+    color: $color-text-light;
+    font-family: "Bricolage Grotesque", sans-serif;
+    width: 100%;
+    text-align: center;
+  }
+  .tech,
+  .sticker-back-content {
+    font-size: 20px;
+    font-weight: 400;
+    color: $color-text-light;
+    font-family: "Bricolage Grotesque", sans-serif;
+    width: 100%;
+    text-align: center;
+  }
+  .sticker-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200px;
+    width: 200px;
+    display: block;
+    z-index: 1;
+  }
+
+  .sticker-back-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 12px;
+    text-align: center;
+    z-index: 2;
+  }
+  .sticker-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    margin-top: 12px;
+    width: 100%;
+
+    img {
+      width: 32px;
+      height: 32px;
+      filter: grayscale(100%);
+      transition: all 0.3s ease;
+
+      &:hover {
+        filter: grayscale(0%);
+        transform: scale(1.2);
+      }
+    }
+  }
+  .tech {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}

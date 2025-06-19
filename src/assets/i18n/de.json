@@ -25,6 +25,8 @@
   "skills": {
     "MY_STACK": "Mein Stack",
     "SKILLS_TITLE": "Fähigkeiten",
-    "SKILLS_DESCRIPTION": "Ich verfüge über ein breites Spektrum an Fähigkeiten, die es mir ermöglichen, verschiedene Herausforderungen in der Frontend-Entwicklung zu meistern. Hier sind einige der Schlüsselbereiche, auf die ich mich spezialisiert habe:"
+    "SKILLS_DESCRIPTION": "Ich verfüge über ein breites Spektrum an Fähigkeiten, die es mir ermöglichen, verschiedene Herausforderungen in der Frontend-Entwicklung zu meistern. Hier sind einige der Schlüsselbereiche, auf die ich mich spezialisiert habe:",
+    "STIKER_TEXT": "Jetzt entdecken",
+    "STIKKER_BACK_CONTENT": "Außerdem interessiere ich mich für:"
   }
 }

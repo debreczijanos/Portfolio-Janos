@@ -3,6 +3,7 @@
         <div class="skills-header-content">
             <span class="skills-subtitle">{{'skills.MY_STACK' | translate }}</span>
             <h2 class="skills-title">{{'skills.SKILLS_TITLE' | translate }}</h2>
+            <div class="skills-line" id="skillsLine"></div>
         </div>
         <p class="skills-description">
             {{'skills.SKILLS_DESCRIPTION' | translate }}
@@ -53,9 +54,35 @@
             </div>
         </div>
 
-        <div class="skills-sticker">
-            <img src="/assets/images/pull-to-peel-sticker.png" alt="Pull to peel sticker" />
+        <!-- <div class="skills-sticker">
+            <img src="/assets/images/skills/stiker.png" alt="Pull to peel sticker" class="sticker-background" />
+            <img src="/assets/images/skills/flechha.png" alt="Arrow" class="sticker-arrow" />
+            <span class="sticker-text">{{'skills.STIKER_TEXT' | translate }}</span>
+        </div> -->
+        <div class="skills-sticker-wrapper">
+            <div class="skills-sticker-inner">
+                <div class="skills-sticker-front">
+                    <img src="/assets/images/skills/stiker.png" alt="Pull to peel sticker" class="sticker-front" />
+                    <img src="/assets/images/skills/flechha.png" alt="Arrow" class="sticker-arrow" />
+                    <span class="sticker-text">{{'skills.STIKER_TEXT' | translate }}</span>
+                </div>
+                <div class="skills-sticker-back">
+                    <img src="/assets/images/skills/sticker-back.png" alt="Back Sticker" class="sticker-back" />
+                    <div class="sticker-back-content">
+                        <p>{{ 'skills.STIKKER_BACK_CONTENT' | translate }}</p>
+                        <div class="sticker-icons">
+                            <div class="tech">
+                                <img src="/assets/images/skills/react.svg" alt="React" />
+                                <span>React</span>
+                            </div>
+                            <div class="tech">
+                                <img src="/assets/images/skills/vue.svg" alt="Vue Js" />
+                                <span>Vue Js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
 </section>

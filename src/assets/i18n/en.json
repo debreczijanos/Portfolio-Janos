@@ -25,6 +25,8 @@
   "skills": {
     "MY_STACK": "My stack",
     "SKILLS_TITLE": "Skill set",
-    "SKILLS_DESCRIPTION": "I have a diverse skill set that allows me to tackle various challenges in frontend development. Here are some of the key areas I specialize in:"
+    "SKILLS_DESCRIPTION": "I have a diverse skill set that allows me to tackle various challenges in frontend development. Here are some of the key areas I specialize in:",
+    "STIKER_TEXT": "Pull to peel", 
+    "STIKKER_BACK_CONTENT": "Also, I'm interested in diving into:"
   }
 }
