@@ -28,5 +28,13 @@
     "SKILLS_DESCRIPTION": "Ich verfüge über ein breites Spektrum an Fähigkeiten, die es mir ermöglichen, verschiedene Herausforderungen in der Frontend-Entwicklung zu meistern. Hier sind einige der Schlüsselbereiche, auf die ich mich spezialisiert habe:",
     "STIKER_TEXT": "Jetzt entdecken",
     "STIKKER_BACK_CONTENT": "Außerdem interessiere ich mich für:"
+  },
+  "projects": {
+    "PROJECTS_TITLE": "Projekte",
+    "PROJECTS_DESCRIPTION": "In diesem Abschnitt präsentiere ich praxisnahe Projekte, die ich entwickelt habe, um meine Kenntnisse in JavaScript, TypeScript, Angular und responsive Design zu vertiefen. Sie spiegeln meinen Ansatz wider, skalierbare, wartbare und benutzerfreundliche Anwendungen zu erstellen.",
+    "PROJECTS_CTA": "MEIN HANDWERK",
+    "PROJECTS_BTN": "Projektdetails",
+    "PROJECTS_JOIN": "Task-Manager inspiriert vom Kanban-System. Erstellen und Organisieren von Aufgaben mit Drag-and-Drop-Funktionen, Zuweisen von Benutzern und Kategorien.",
+    "PROJECTS_POLLO": "Spring-, Lauf- und Wurfspiel basierend auf dem objektorientierten Ansatz. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen das verrückte Huhn zu kämpfen."
   }
 }

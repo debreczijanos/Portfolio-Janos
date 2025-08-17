@@ -1,0 +1,228 @@
+@import "../../../styles/variables";
+.projects-section {
+  // padding: 4rem 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  justify-content: space-between;
+  padding: 144px 12px;
+}
+
+.projects-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.projects-intro-title {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.projects-line {
+  position: relative;
+  height: 20px;
+  width: 303px;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url("../../../assets/images/projects/projectsLine.svg")
+      no-repeat left center;
+    background-size: contain;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 2;
+  }
+
+  &.active::after {
+    transform: scaleX(1);
+  }
+}
+
+.projects-intro h5 {
+  font-size: 20px;
+  color: $color-text-btn;
+  font-weight: 500;
+  font-family: "Bricolage Grotesque", sans-serif;
+  text-transform: uppercase;
+  margin-block: 0;
+}
+
+.projects-intro h2 {
+  font-size: 64px;
+  font-weight: 700;
+  color: $color-text-btn;
+  font-family: "Bricolage Grotesque", sans-serif;
+  margin-block: 0;
+}
+
+.projects-intro p {
+  font-size: 18px;
+  color: $color-text-btn;
+  font-weight: 400;
+  font-family: "Bricolage Grotesque", sans-serif;
+  margin-block: 0;
+}
+
+.projects-grid {
+  // display: grid;
+  // grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  // gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.project-item {
+  position: relative;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  // Füge Schatten hinzu
+  // box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  // transition: box-shadow 0.3s ease;
+
+  // // Erhöhe Schatten beim Hover
+  // &:hover {
+  //   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  // }
+
+  .project-overlay {
+    position: absolute;
+    bottom: 24px;
+    right: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 4;
+  }
+
+  &:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    h3 {
+      font-weight: 700;
+      font-family: "Bricolage Grotesque", sans-serif;
+      font-size: $font-size-lg;
+      color: $color-text-btn;
+      margin-block: 0;
+    }
+
+    p {
+      font-size: 18px;
+      color: $color-text-btn;
+      font-weight: 400;
+      font-family: "Bricolage Grotesque", sans-serif;
+      margin-block: 0;
+    }
+  }
+}
+
+// Neuer Bild-Container mit overflow hidden
+.project-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  height: 340px;
+  width: 100%;
+
+  // Gradient overlay
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0) 60%
+    );
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    border-radius: 20px;
+    z-index: 1;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &:hover .project-image {
+    transform: scale(1.15);
+  }
+}
+
+.project-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-size: $font-size-md;
+  font-weight: 500;
+  font-family: "Bricolage Grotesque", sans-serif;
+  color: $color-text-light;
+  border: 1px solid $color-text-light;
+  border-radius: 100px;
+  overflow: hidden;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 4px 0px 0px $color-text-light;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(4px);
+    background-color: $color-accent;
+    box-shadow: none;
+  }
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.5s ease;
+  display: block;
+  transform-origin: center;
+}
+
+.badge {
+  position: absolute;
+  top: 200px;
+  left: 20px;
+  z-index: 3;
+
+  img {
+    width: 144px;
+    height: 144px;
+  }
+}
+
+// @media (prefers-reduced-motion: reduce) {
+//   .project-image {
+//     transition: none;
+//   }
+//   .project-item::after {
+//     transition: none;
+//   }
+// }

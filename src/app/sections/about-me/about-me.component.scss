@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
 .about-me-section {
   display: flex;
   flex-direction: row;
@@ -18,50 +18,48 @@
   height: 400px;
   justify-content: space-between;
 
-   .based-in-ulm{
+  .based-in-ulm {
     top: 26px;
     z-index: 3;
 
-         .label-text {
-            rotate: -4deg;
-            top: 50%;
-            left: 47%;
-            transform: translate(-50%, -50%);
-         }
-
+    .label-text {
+      rotate: -4deg;
+      top: 50%;
+      left: 47%;
+      transform: translate(-50%, -50%);
     }
+  }
 
-    .open-to-relocate {
-        z-index: 2;
-      .label-text {
-        top: 46%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
+  .open-to-relocate {
+    z-index: 2;
+    .label-text {
+      top: 46%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
+  }
 
-    .open-to-remote {
-        top: -64px;
-        z-index: 1;
-      .label-text {
-        rotate: 8deg;
-        top: 76%;
-        left: 48%;
-        transform: translate(-50%, -50%);
-      }
+  .open-to-remote {
+    top: -64px;
+    z-index: 1;
+    .label-text {
+      rotate: 8deg;
+      top: 76%;
+      left: 48%;
+      transform: translate(-50%, -50%);
     }
+  }
 
   .label-item {
     position: relative;
     width: 100%;
     height: 152px;
-   
 
     .label-text {
       position: absolute;
       display: flex;
       align-items: center;
-  white-space: nowrap;
+      white-space: nowrap;
       gap: 8px;
       color: $color-text-light;
       font-weight: 400;
@@ -75,65 +73,65 @@
   }
 }
 
-.about-me-container{
-    span{
-        color: $color-text-btn;
-        font-weight: 500;
-        font-size: 20px;
-        font-family: 'Bricolage Grotesque', sans-serif;
-    }
+.about-me-container {
+  span {
+    color: $color-text-btn;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
   .section-title {
-  font-size: 64px;
-  font-weight: 700;
-  font-family: 'Bricolage Grotesque', sans-serif;
-  color: $color-text-btn;
-  position: relative;
+    font-size: 64px;
+    font-weight: 700;
+    font-family: "Bricolage Grotesque", sans-serif;
+    color: $color-text-btn;
+    position: relative;
+  }
+  .section-line {
+    position: relative;
+    height: 20px;
+    width: 303px;
+    overflow: hidden;
 
-}
-.section-line {
-  position: relative;
-  height: 20px;
-  width: 303px;
-  overflow: hidden;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: url("../../../assets/images/aboutMe/line.svg") no-repeat left
+        center;
+      background-size: contain;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      z-index: 2;
+    }
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: url('../../../assets/images/aboutMe/line.svg') no-repeat left center;
-    background-size: contain;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    z-index: 2;
+    &.active::after {
+      transform: scaleX(1);
+    }
   }
 
-  &.active::after {
-    transform: scaleX(1);
-  }
-}
-
-.about-me-content {
+  .about-me-content {
     margin: 24px 0px;
     font-size: 20px;
     font-weight: 400;
-        font-family: 'Bricolage Grotesque', sans-serif;
-        color: $color-text-btn;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
+    font-family: "Bricolage Grotesque", sans-serif;
+    color: $color-text-btn;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-   .about-me-cta-container{
+  .about-me-cta-container {
     display: flex;
     width: 100%;
     justify-content: flex-end;
-}
+  }
 
-.about-me-cta{
+  .about-me-cta {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,7 +139,7 @@
     padding: 12px 24px;
     font-size: $font-size-md;
     font-weight: 500;
-    font-family: 'Bricolage Grotesque', sans-serif;
+    font-family: "Bricolage Grotesque", sans-serif;
     color: $color-text-btn;
     border: 1px solid $color-text-btn;
     border-radius: 100px;
@@ -150,11 +148,12 @@
     transition: all 0.3s ease-in-out;
     box-shadow: 2px 4px 0px 0px #000000;
     cursor: pointer;
-   
-&:hover {
-        transform: translateY(4px);
-        background-color: $color-accent;
-        color: $color-text-light;
-        box-shadow: none;
+
+    &:hover {
+      transform: translateY(4px);
+      background-color: $color-accent;
+      color: $color-text-light;
+      box-shadow: none;
     }
-}}
+  }
+}

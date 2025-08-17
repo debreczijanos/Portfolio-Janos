@@ -28,5 +28,13 @@
     "SKILLS_DESCRIPTION": "I have a diverse skill set that allows me to tackle various challenges in frontend development. Here are some of the key areas I specialize in:",
     "STIKER_TEXT": "Pull to peel", 
     "STIKKER_BACK_CONTENT": "Also, I'm interested in diving into:"
+  },
+  "projects": {
+    "PROJECTS_TITLE": "Projects",
+    "PROJECTS_DESCRIPTION": "This section highlights practical projects I’ve developed to strengthen my expertise in JavaScript, TypeScript, Angular, and responsive design. They reflect my approach to building scalable, maintainable, and user-friendly applications.",
+    "PROJECTS_CTA": "MY CRAFT",
+    "PROJECTS_BTN": "Project details",
+    "PROJECTS_JOIN": "Task manager inspired by the Kanban System. Create and organize tasks using drag and drop functions, assign user and category.",
+    "PROJECTS_POLLO": "Jump, run and throw game based on object-oriented approach. Help Pepe to find coins and tabasco salsa to fight against the crazy hen."
   }
 }

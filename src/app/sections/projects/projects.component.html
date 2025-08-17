@@ -1,1 +1,49 @@
-<p>projects works!</p>
+<section class="projects-section">
+    <div class="projects-intro">
+        <div class="projects-intro-title">
+            <h5>{{ 'projects.PROJECTS_CTA' | translate }}</h5>
+            <h2>{{ 'projects.PROJECTS_TITLE' | translate }}</h2>
+            <div class="projects-line" id="projectsLine"></div>
+        </div>
+        <p>{{ 'projects.PROJECTS_DESCRIPTION' | translate }}</p>
+    </div>
+
+    <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-item featured">
+            <div class="project-image-container">
+                <img src="assets/images/projects/Laptop.png" alt="Join App Screenshot" class="project-image" />
+
+                <!-- Overlay Button -->
+                <div class="project-overlay">
+                    <button class="project-btn">{{ 'projects.PROJECTS_BTN' | translate }}</button>
+                </div>
+
+            </div>
+            <div class="badge"><img src="assets/images/projects/Sticker.png" alt=""></div>
+
+            <div class="project-info">
+                <h3>Join</h3>
+                <p>{{ 'projects.PROJECTS_JOIN' | translate }}</p>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-item">
+            <div class="project-image-container">
+                <img src="assets/images/projects/Pollo.png" alt="El Pollo Loco Screenshot" class="project-image" />
+
+                <!-- Overlay Button -->
+                <div class="project-overlay">
+                    <button class="project-btn">{{ 'projects.PROJECTS_BTN' | translate }}</button>
+                </div>
+            </div>
+
+            <div class="project-info">
+                <h3>El Pollo Loco</h3>
+                <p>{{ 'projects.PROJECTS_POLLO' | translate }}</p>
+            </div>
+        </div>
+
+    </div>
+</section>
