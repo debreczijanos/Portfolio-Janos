@@ -1,0 +1,73 @@
+<section class="contact" aria-labelledby="contact-overline">
+    <div class="contact__content">
+        <!-- LEFT: Intro copy -->
+        <div class="contact__intro">
+            <span id="contact-overline" class="contact__overline">CONTACT ME</span>
+
+            <h2 class="contact__display">Ready to work<br />together?</h2>
+
+            <p class="contact__lead">
+                Encourage people to contact you and describe what role you are interested in. Express confidence in your
+                ability to make a meaningful contribution to a team through your expertise and enthusiasm for improving
+                your skills.
+            </p>
+            <p class="contact__lead">
+                Show interest in contributing to a new project, while highlighting the value and skills you can bring to
+                the table.
+            </p>
+            <div class="contact__scribble-container">
+                <div class="contact__scribble" id="contact-scribble"></div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT: Form -->
+        <form class="contact__form" (submit)="$event.preventDefault()" novalidate>
+            <img class="contact__badge" src="../../../assets/images/logo/logoOrange.png" alt="personal badge" />
+
+            <div class="form__group">
+                <label class="form__label" for="name">What's your name?</label>
+                <input id="name" name="name" type="text" placeholder="Your name goes here" required />
+            </div>
+
+            <div class="form__group">
+                <label class="form__label" for="email">What's your email?</label>
+                <input id="email" name="email" type="email" placeholder="youremail@email.com" required />
+            </div>
+
+            <div class="form__group form__group--full">
+                <label class="form__label" for="message">How can I help you?</label>
+                <textarea id="message" name="message" rows="3" placeholder="Hello Lukas, I am interested in..."
+                    required></textarea>
+            </div>
+
+            <div class="form__consent form__group--full">
+                <label class="form__checkbox">
+                    <input type="checkbox" id="consent" name="consent" />
+                    <span>I've read the <a href="#">privacy policy</a> and agree to the processing of my data as
+                        outlined.</span>
+                </label>
+            </div>
+
+            <div class="form__actions">
+                <button class="btn btn--pill" type="submit" disabled>Send</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- FOOTER LINKS -->
+    <div class="contact__footer">
+        <div class="contact__brand">
+            <img class="brand__logo" src="../../../assets/images/logo/logoBlueIcon.png" alt="personal logo" />
+            <!-- <span class="brand__logo">DJ</span> -->
+            <span class="brand__copy">© János Debreczi 2025</span>
+        </div>
+
+        <ul class="contact__links" aria-label="Footer links">
+            <li><a href="#">Legal Notice</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Email</a></li>
+        </ul>
+    </div>
+</section>
