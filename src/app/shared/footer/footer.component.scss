@@ -1,0 +1,215 @@
+@import "../../../styles/variables";
+
+/* FOOTER */
+
+.contact__footer {
+  max-width: 1440px;
+  width: 100%;
+  padding: 24px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 40px auto 0;
+}
+.contact__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  color: $color-text-btn;
+  font-weight: 700;
+  font-size: $font-size-md;
+  font-family: $font-family-base;
+  text-decoration: none;
+}
+.brand__logo {
+  width: 48px;
+  height: 48px;
+}
+.contact__links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+}
+.contact__links a {
+  color: $color-text-btn;
+  font-weight: 700;
+  font-size: $font-size-md;
+  font-family: $font-family-base;
+  text-decoration: none;
+}
+.contact__links a:hover {
+  text-underline-offset: 2px;
+}
+
+// }
+
+// Legal Icon mit Unterstrich-Animation (wie Social Icons, aber andere Animation)
+.legal-link-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.legal-icon-hover {
+  position: absolute;
+  left: 0;
+  bottom: -10px; // Positioniert unter dem Link
+  width: 100%;
+  height: 34px; // Höhe deines Bildes
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  overflow: hidden; // Wichtig für die Animation
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  // Unterstrich-Animation wie in deinem Beispiel
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/assets/images/footer/lineLegalNotice.png") no-repeat left
+      center / contain;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+}
+
+.legal-link-wrapper:hover .legal-icon-hover {
+  opacity: 1;
+
+  &::before {
+    animation: drawLine 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+}
+
+// Keyframe-Animation für den Unterstrich
+@keyframes drawLine {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.github__icon {
+  width: 24px;
+  height: 24px;
+  background: url("/assets/images/icons/github.png") no-repeat center / contain;
+  position: relative;
+  top: 0px;
+  left: 10%;
+}
+
+.linkedin__icon {
+  width: 24px;
+  height: 24px;
+  background: url("/assets/images/icons/Linkedin.png") no-repeat center /
+    contain;
+  position: relative;
+  top: 0px;
+  left: 10%;
+}
+
+.email__icon {
+  width: 24px;
+  height: 24px;
+  background: url("/assets/images/icons/mail.png") no-repeat center / contain;
+  position: relative;
+  top: 0px;
+  left: 10%;
+}
+
+// Hover-Effekt nur für die 3 Social Media Links (GitHub, LinkedIn, Email)
+// Verwendet den gleichen Effekt wie der Hero-Tag
+.contact__links li:nth-child(2) a,  // GitHub
+.contact__links li:nth-child(3) a,  // LinkedIn  
+.contact__links li:nth-child(4) a {
+  // Email
+  position: relative;
+  z-index: 0; // eigener Stacking-Context für ::before
+  display: inline-flex;
+  align-items: center;
+
+  padding: 12px 24px;
+
+  border-radius: 100px;
+  overflow: hidden;
+  // background: transparent;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+
+  // Gleicher Hintergrund-Effekt wie Hero-Tag
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 100%;
+    background: $color-primary; // #3355ff (wie im Hero-Tag)
+    z-index: -1; // Hintergrund hinter dem Text
+    transition: all 0.4s ease-in-out;
+    transform: translateX(-50%);
+  }
+
+  &:hover::before {
+    width: 200%;
+  }
+
+  &:hover {
+    color: $color-text-light;
+  }
+}
+
+// Icon-Animation wie im Hero-Tag
+.social-link-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.social-icon-hover {
+  position: absolute;
+  left: 50%;
+  top: -50%;
+  transform: translate(-60%, -50%) scale(1) rotate(0deg);
+  color: #fff;
+  font-size: 2.2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Make white icons appear black on light background */
+    filter: brightness(0) saturate(100%);
+  }
+}
+
+.social-link-wrapper:hover .social-icon-hover {
+  opacity: 1;
+  transform: translate(60%, -50%) scale(1) rotate(720deg);
+}

@@ -1,0 +1,72 @@
+<section class="legal-notice">
+  <div class="legal-hero">
+    <div class="legal-hero__inner">
+      <h1 class="page-title page-title--inverse">{{ 'legal.PAGE_TITLE' | translate }}</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <a class="back-btn" routerLink="/">{{ 'legal.BACK' | translate }}</a>
+
+    <div class="section">
+      <h2 class="section-title section-title--accent">{{ 'legal.IMPRINT_TITLE' | translate }}</h2>
+      <div class="section-content">
+        <ul>
+          <li>Debreczi János</li>
+          <li>Orsenhauser Str. Nr.: 30</li>
+          <li>88483 Burgrieden</li>
+        </ul>
+        <p>{{ 'legal.EMAIL' | translate }}: <a href="mailto:example&#64;mail.de">example&#64;mail.de</a></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title section-title--accent">{{ 'legal.ACCEPTANCE_TITLE' | translate }}</h2>
+      <div class="section-content">
+        <p [innerHTML]="'legal.ACCEPTANCE_TEXT' | translate"></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title section-title--accent">{{ 'legal.SCOPE_TITLE' | translate }}</h2>
+      <div class="section-content">
+        <p [innerHTML]="'legal.SCOPE_TEXT1' | translate"></p>
+        <p [innerHTML]="'legal.SCOPE_TEXT2' | translate"></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title section-title--accent">{{ 'legal.PROPRIETARY_TITLE' | translate }}</h2>
+      <div class="section-content">
+        <p [innerHTML]="'legal.PROPRIETARY_TEXT' | translate"></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title section-title--accent">{{ 'legal.USE_TITLE' | translate }}</h2>
+      <div class="section-content">
+        <p [innerHTML]="'legal.USE_TEXT' | translate"></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title section-title--accent">{{ 'legal.WARRANTY_TITLE' | translate }}</h2>
+      <div class="section-content">
+        <p [innerHTML]="'legal.WARRANTY_TEXT' | translate"></p>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title section-title--accent">{{ 'legal.INDEMNITY_TITLE' | translate }}</h2>
+      <div class="section-content">
+        <p [innerHTML]="'legal.INDEMNITY_TEXT' | translate"></p>
+        <br>
+        <p>{{ 'legal.CONTACT_QUESTIONS' | translate }}</p>
+        <br>
+        <p>{{ 'legal.LAST_UPDATED' | translate: { date: lastUpdated } }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

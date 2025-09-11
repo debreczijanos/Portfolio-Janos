@@ -1,7 +1,7 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
 
 header {
-  position: fixed;
+  position: absolute; /* sits over hero initially, scrolls away */
   top: 0;
   left: 0;
   width: 100%;
@@ -9,6 +9,21 @@ header {
   background: transparent;
   height: $header-height;
   align-content: center;
+}
+
+/* Solid header variant for non-home routes */
+.header--solid {
+  position: relative; /* on subpages, take up layout space */
+  background: $color-header-bg;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  .nav-content ul li {
+    color: $color-text;
+  }
+
+  .language-toggle {
+    color: $color-text;
+  }
 }
 .language-toggle {
   display: flex;
@@ -24,7 +39,7 @@ header {
     cursor: pointer;
     transition: color 0.3s;
   }
-  
+
   .lang-label::before {
     content: "";
     position: absolute;
@@ -32,7 +47,7 @@ header {
     left: -8px;
     right: -8px;
     bottom: -8px;
-    background-image: url('/assets/images/hoverImg/toggleLanguage.png');
+    background-image: url("/assets/images/hoverImg/toggleLanguage.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -46,7 +61,7 @@ header {
 
   .show-img-frame::before {
     opacity: 1;
-    animation: circle-reveal 0.4s cubic-bezier(0.4,0,0.2,1) forwards;
+    animation: circle-reveal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     transform: rotate(-180deg);
   }
 
@@ -132,7 +147,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 10px 28px;
   background-color: transparent;
 }
 
@@ -175,7 +190,7 @@ nav {
 
       // 1. Element: About me (von oben nach unten)
       &:first-child::before {
-        background-image: url('/assets/images/hoverImg/aboutMeHover.png');
+        background-image: url("/assets/images/hoverImg/aboutMeHover.png");
         clip-path: inset(0 0 100% 0);
       }
       &:first-child:hover::before {
@@ -184,7 +199,7 @@ nav {
 
       // 2. Element: Skills (von links nach rechts)
       &:nth-child(2)::before {
-        background-image: url('/assets/images/hoverImg/skillsHover.png');
+        background-image: url("/assets/images/hoverImg/skillsHover.png");
         clip-path: inset(0 100% 0 0);
       }
       &:nth-child(2):hover::before {
@@ -193,7 +208,7 @@ nav {
 
       // 3. Element: Projects (von links nach rechts)
       &:nth-child(3)::before {
-        background-image: url('/assets/images/hoverImg/projectsHover.png');
+        background-image: url("/assets/images/hoverImg/projectsHover.png");
         clip-path: inset(0 100% 0 0);
       }
       &:nth-child(3):hover::before {
@@ -202,14 +217,25 @@ nav {
 
       // 4. Element: Contact (von links nach rechts)
       &:nth-child(4)::before {
-        background-image: url('/assets/images/hoverImg/contactHover.png');
+        background-image: url("/assets/images/hoverImg/contactHover.png");
         clip-path: inset(0 100% 0 0);
       }
       &:nth-child(4):hover::before {
         clip-path: inset(0 0 0 0);
       }
-    } 
-  }}
+    }
+  }
+}
+
+/* Ensure anchor tags inherit styling and remove default underline */
+.nav-content a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-content a.active {
+  color: $color-accent;
+}
 
 .logo {
   display: flex;

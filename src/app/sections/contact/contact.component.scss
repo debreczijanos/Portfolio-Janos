@@ -1,8 +1,8 @@
 @import "../../../styles/variables";
 
 section {
-  max-width: 1440px;
-  height: 900px;
+  // max-width: 1440px;
+  // height: 900px;
   //   margin-top: 80px;
   margin: 80px auto 0 auto;
   padding: 144px 12px 0 12px;
@@ -20,12 +20,8 @@ section::before {
   background: url("../../../assets/images/ace3.png") center/cover no-repeat;
   transform: rotate(180deg);
   z-index: -1;
+  background-size: 120% 100%;
 }
-
-/* ===== MOCKUP STYLES (dark, minimal, two columns) ===== */
-// .contact {
-//   color: #f1f5f9; /* slate-100 */
-// }
 
 .contact__content {
   width: 100%;
@@ -36,7 +32,6 @@ section::before {
   gap: 48px;
   background: transparent;
   box-shadow: none;
-  //   padding: 0 12px;
 
   /* INTRO */
   .contact__intro {
@@ -130,12 +125,16 @@ section::before {
 .form__group {
   display: flex;
   flex-direction: column;
+  gap: 6px; // Abstand zwischen Label, Feld und Fehlermeldung
 
   &:hover {
     border-top: 1px solid $color-primary;
     .form__label {
       color: $color-accent;
     }
+  }
+  &.invalid .form__label {
+    color: $color-accent;
   }
 }
 .form__group--full {
@@ -149,10 +148,21 @@ section::before {
   font-family: $font-family-base;
 }
 
+.form__error {
+  min-height: 18px; // reserviert Platz, damit die Form nicht springt
+  color: $color-accent;
+  font-size: $font-size-sm;
+  padding: 0 24px 4px 24px;
+  visibility: hidden;
+}
+.form__error.show {
+  visibility: visible;
+}
+
 /* inputs are transparent with bottom rule */
 input,
 textarea {
-  background: transparent;
+  background: transparent !important;
   border: none;
   border-bottom: 1px solid #ccc; /* warm gold */
   border-radius: 0;
@@ -165,6 +175,28 @@ textarea {
   &:hover {
     border-bottom-color: $color-primary;
   }
+}
+
+/* Remove browser autofill background (Chrome/Safari/Edge) */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  /* Overpaint the pale autofill background with transparent */
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  box-shadow: 0 0 0px 1000px transparent inset;
+  -webkit-text-fill-color: $color-text-light;
+  caret-color: $color-text-light;
+  background-clip: padding-box;
+  transition: background-color 9999s ease-out 0s; /* prevent flash */
+}
+
+/* Firefox */
+input:-moz-autofill,
+textarea:-moz-autofill,
+select:-moz-autofill {
+  box-shadow: inset 0 0 0 1000px transparent;
+  -moz-text-fill-color: $color-text-light;
+  caret-color: $color-text-light;
 }
 
 input::placeholder,
@@ -244,7 +276,15 @@ textarea:focus {
 /* button */
 .form__actions {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between; /* Text links, Button rechts */
+  gap: 12px;
+  flex-wrap: wrap; /* bricht um, falls kein Platz */
+}
+
+/* Button immer nach rechts schieben, selbst wenn Notice fehlt */
+.form__actions .btn {
+  margin-left: auto;
 }
 
 .btn:enabled {
@@ -293,11 +333,23 @@ textarea:focus {
   cursor: not-allowed;
 }
 
+.form__notice {
+  margin-top: 12px;
+  font-size: $font-size-sm;
+  padding: 0 24px;
+}
+.form__notice.success {
+  color: #4caf50;
+}
+.form__notice.error {
+  color: $color-accent;
+}
+
 /* FOOTER */
 .contact__footer {
   max-width: 1440px;
   width: 100%;
-  padding: 0 12px;
+  padding: 18px 28px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -310,8 +362,11 @@ textarea:focus {
   align-items: flex-start;
   justify-content: flex-start;
   gap: 10px;
-  color: #cbd5e1;
-  font-size: 14px;
+  color: $color-text-light;
+  font-weight: 700;
+  font-size: $font-size-md;
+  font-family: $font-family-base;
+  text-decoration: none;
 }
 .brand__logo {
   width: 48px;
@@ -328,12 +383,173 @@ textarea:focus {
   margin: 0;
 }
 .contact__links a {
-  color: #e5e7eb;
+  color: $color-text-light;
+  font-weight: 700;
+  font-size: $font-size-md;
+  font-family: $font-family-base;
   text-decoration: none;
 }
 .contact__links a:hover {
-  text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+// }
+
+// Legal Icon mit Unterstrich-Animation (wie Social Icons, aber andere Animation)
+.legal-link-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.legal-icon-hover {
+  position: absolute;
+  left: 0;
+  bottom: -10px; // Positioniert unter dem Link
+  width: 100%;
+  height: 34px; // Höhe deines Bildes
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  overflow: hidden; // Wichtig für die Animation
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  // Unterstrich-Animation wie in deinem Beispiel
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../../../assets/images/footer/lineLegalNotice.png")
+      no-repeat left center / contain;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+}
+
+.legal-link-wrapper:hover .legal-icon-hover {
+  opacity: 1;
+
+  &::before {
+    animation: drawLine 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+}
+
+// Keyframe-Animation für den Unterstrich
+@keyframes drawLine {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.github__icon {
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/images/icons/github.png") no-repeat center /
+    contain;
+  position: relative;
+  top: 0px;
+  left: 10%;
+}
+
+.linkedin__icon {
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/images/icons/Linkedin.png") no-repeat center /
+    contain;
+  position: relative;
+  top: 0px;
+  left: 10%;
+}
+
+.email__icon {
+  width: 24px;
+  height: 24px;
+  background: url("../../../assets/images/icons/mail.png") no-repeat center /
+    contain;
+  position: relative;
+  top: 0px;
+  left: 10%;
+}
+
+// Hover-Effekt nur für die 3 Social Media Links (GitHub, LinkedIn, Email)
+// Verwendet den gleichen Effekt wie der Hero-Tag
+.contact__links li:nth-child(2) a,  // GitHub
+.contact__links li:nth-child(3) a,  // LinkedIn  
+.contact__links li:nth-child(4) a {
+  // Email
+  position: relative;
+  z-index: 0; // eigener Stacking-Context wie im Footer
+  display: inline-flex;
+  align-items: center;
+
+  padding: 12px 24px;
+
+  border-radius: 100px;
+  overflow: hidden;
+  // background: transparent;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+
+  // Gleicher Hintergrund-Effekt wie Hero-Tag
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 100%;
+    background: $color-primary; // #3355ff (wie im Hero-Tag)
+    z-index: -1; // Hintergrund hinter dem Text
+    transition: all 0.4s ease-in-out;
+    transform: translateX(-50%);
+  }
+
+  &:hover::before {
+    width: 200%;
+  }
+}
+
+// Icon-Animation wie im Hero-Tag
+.social-link-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.social-icon-hover {
+  position: absolute;
+  left: 50%;
+  top: -50%;
+  transform: translate(-60%, -50%) scale(1) rotate(0deg);
+  color: #fff;
+  font-size: 2.2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.social-link-wrapper:hover .social-icon-hover {
+  opacity: 1;
+  transform: translate(60%, -50%) scale(1) rotate(720deg);
 }
 
 /* RESPONSIVE */

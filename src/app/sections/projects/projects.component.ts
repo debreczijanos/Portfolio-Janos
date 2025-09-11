@@ -3,6 +3,7 @@ import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
+  standalone: true,
   selector: 'app-projects',
   imports: [CommonModule, TranslateModule],
   templateUrl: './projects.component.html',

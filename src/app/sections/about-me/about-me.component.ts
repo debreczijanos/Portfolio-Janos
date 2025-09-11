@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'app-about-me',
   imports: [CommonModule, TranslateModule],
   templateUrl: './about-me.component.html',

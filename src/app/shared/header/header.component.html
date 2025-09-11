@@ -1,14 +1,14 @@
-<header>
+<header [class.header--solid]="solidHeader">
     <nav>
         <div class="logo">
             <img src="assets/images/logo/logoBlue.png" alt="logo">
         </div>
         <div class="nav-content">
             <ul>
-                <li><a routerLink="/about" routerLinkActive="active">{{ 'header.ABOUT_ME' | translate }}</a></li>
-                <li><a routerLink="/skills" routerLinkActive="active">{{ 'header.SKILLS' | translate }}</a></li>
-                <li><a routerLink="/projects" routerLinkActive="active">{{ 'header.PROJECTS' | translate }}</a></li>
-                <li><a routerLink="/contact" routerLinkActive="active">{{ 'header.CONTACT' | translate }}</a></li>
+                <li><a href="/" (click)="goTo('about', $event)">{{ 'header.ABOUT_ME' | translate }}</a></li>
+                <li><a href="/" (click)="goTo('skills', $event)">{{ 'header.SKILLS' | translate }}</a></li>
+                <li><a href="/" (click)="goTo('projects', $event)">{{ 'header.PROJECTS' | translate }}</a></li>
+                <li><a href="/" (click)="goTo('contact', $event)">{{ 'header.CONTACT' | translate }}</a></li>
             </ul>
         </div>
         <div class="language-toggle">

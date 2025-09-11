@@ -1,20 +1,13 @@
-<section class="contact" aria-labelledby="contact-overline">
+<section class="contact" id="contact" aria-labelledby="contact-overline">
     <div class="contact__content">
         <!-- LEFT: Intro copy -->
         <div class="contact__intro">
-            <span id="contact-overline" class="contact__overline">CONTACT ME</span>
+            <span id="contact-overline" class="contact__overline">{{ 'contact.OVERLINE' | translate }}</span>
 
-            <h2 class="contact__display">Ready to work<br />together?</h2>
+            <h2 class="contact__display">{{ 'contact.TITLE' | translate }}</h2>
 
-            <p class="contact__lead">
-                Encourage people to contact you and describe what role you are interested in. Express confidence in your
-                ability to make a meaningful contribution to a team through your expertise and enthusiasm for improving
-                your skills.
-            </p>
-            <p class="contact__lead">
-                Show interest in contributing to a new project, while highlighting the value and skills you can bring to
-                the table.
-            </p>
+            <p class="contact__lead">{{ 'contact.LEAD1' | translate }}</p>
+            <p class="contact__lead">{{ 'contact.LEAD2' | translate }}</p>
             <div class="contact__scribble-container">
                 <div class="contact__scribble" id="contact-scribble"></div>
             </div>
@@ -22,35 +15,61 @@
         </div>
 
         <!-- RIGHT: Form -->
-        <form class="contact__form" (submit)="$event.preventDefault()" novalidate>
+        <form class="contact__form" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
             <img class="contact__badge" src="../../../assets/images/logo/logoOrange.png" alt="personal badge" />
 
-            <div class="form__group">
-                <label class="form__label" for="name">What's your name?</label>
-                <input id="name" name="name" type="text" placeholder="Your name goes here" required />
+            <div class="form__group" [class.invalid]="isInvalid('name')">
+                <label class="form__label" for="name">{{ 'contact.LABEL_NAME' | translate }}</label>
+                <input id="name" name="name" type="text" [placeholder]="'contact.PLACEHOLDER_NAME' | translate" formControlName="name" required />
+                <div class="form__error" [class.show]="isInvalid('name')">
+                    <ng-container *ngIf="contactForm.get('name')?.errors as e">
+                        <span *ngIf="e['required']">{{ 'contact.ERROR_NAME_REQUIRED' | translate }}</span>
+                        <span *ngIf="e['pattern']">{{ 'contact.ERROR_NAME_PATTERN' | translate }}</span>
+                    </ng-container>
+                </div>
             </div>
 
-            <div class="form__group">
-                <label class="form__label" for="email">What's your email?</label>
-                <input id="email" name="email" type="email" placeholder="youremail@email.com" required />
+            <div class="form__group" [class.invalid]="isInvalid('email')">
+                <label class="form__label" for="email">{{ 'contact.LABEL_EMAIL' | translate }}</label>
+                <input id="email" name="email" type="email" [placeholder]="'contact.PLACEHOLDER_EMAIL' | translate" formControlName="email" required />
+                <div class="form__error" [class.show]="isInvalid('email')">
+                    <ng-container *ngIf="contactForm.get('email')?.errors as e">
+                        <span *ngIf="e['required']">{{ 'contact.ERROR_EMAIL_REQUIRED' | translate }}</span>
+                        <span *ngIf="e['email']">{{ 'contact.ERROR_EMAIL_FORMAT' | translate }}</span>
+                    </ng-container>
+                </div>
             </div>
 
-            <div class="form__group form__group--full">
-                <label class="form__label" for="message">How can I help you?</label>
-                <textarea id="message" name="message" rows="3" placeholder="Hello Lukas, I am interested in..."
-                    required></textarea>
+            <div class="form__group form__group--full" [class.invalid]="isInvalid('message')">
+                <label class="form__label" for="message">{{ 'contact.LABEL_MESSAGE' | translate }}</label>
+                <textarea id="message" name="message" rows="3" [placeholder]="'contact.PLACEHOLDER_MESSAGE' | translate" formControlName="message" required></textarea>
+                <div class="form__error" [class.show]="isInvalid('message')">
+                    <ng-container *ngIf="contactForm.get('message')?.errors as e">
+                        <span *ngIf="e['required']">{{ 'contact.ERROR_MESSAGE_REQUIRED' | translate }}</span>
+                        <span *ngIf="e['minlength']">{{ 'contact.ERROR_MESSAGE_MINLENGTH' | translate }}</span>
+                    </ng-container>
+                </div>
             </div>
 
-            <div class="form__consent form__group--full">
+            <div class="form__consent form__group--full" [class.invalid]="isInvalid('consent')">
                 <label class="form__checkbox">
-                    <input type="checkbox" id="consent" name="consent" />
-                    <span>I've read the <a href="#">privacy policy</a> and agree to the processing of my data as
-                        outlined.</span>
+                    <input type="checkbox" id="consent" name="consent" formControlName="consent" />
+                    <span>
+                        {{ 'contact.CONSENT_PREFIX' | translate }}
+                        <a routerLink="/legal-notice">{{ 'contact.CONSENT_LINK' | translate }}</a>
+                        {{ 'contact.CONSENT_SUFFIX' | translate }}
+                    </span>
                 </label>
+                <div class="form__error" [class.show]="isInvalid('consent')">{{ 'contact.ERROR_CONSENT_REQUIRED' | translate }}</div>
             </div>
+
+            <!-- Honeypot (unsichtbar für Nutzer) -->
+            <input type="text" name="company" formControlName="company" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px; opacity:0; height:0; width:0;" aria-hidden="true" />
 
             <div class="form__actions">
-                <button class="btn btn--pill" type="submit" disabled>Send</button>
+                <p class="form__notice success" *ngIf="sent">{{ 'contact.SEND_SUCCESS' | translate }}</p>
+                <p class="form__notice error" *ngIf="sendError">{{ 'contact.SEND_ERROR' | translate }}</p>
+                <button class="btn btn--pill" type="submit" [disabled]="contactForm.invalid || sending">{{ sending ? ('contact.SENDING' | translate) : ('contact.SEND' | translate) }}</button>
             </div>
         </form>
     </div>
@@ -64,10 +83,28 @@
         </div>
 
         <ul class="contact__links" aria-label="Footer links">
-            <li><a href="#">Legal Notice</a></li>
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">LinkedIn</a></li>
-            <li><a href="#">Email</a></li>
+            <li class="legal-link-wrapper">
+                <div class="legal-icon-hover"></div>
+                <a routerLink="/legal-notice" routerLinkActive="active">Legal Notice</a>
+            </li>
+            <li class="social-link-wrapper">
+                <div class="social-icon-hover">
+                    <img src="../../../assets/images/icons/github.png" alt="GitHub" />
+                </div>
+                <a href="https://github.com/debreczijanos" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </li>
+            <li class="social-link-wrapper">
+                <div class="social-icon-hover">
+                    <img src="../../../assets/images/icons/Linkedin.png" alt="LinkedIn" />
+                </div>
+                <a href="https://linkedin.com/in/debreczi-janos-21847a1a4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
+            <li class="social-link-wrapper">
+                <div class="social-icon-hover">
+                    <img src="../../../assets/images/icons/mail.png" alt="Email" />
+                </div>
+                <a href="mailto:janos@debreczi.com">Email</a>
+            </li>
         </ul>
     </div>
 </section>

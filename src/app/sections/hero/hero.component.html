@@ -29,7 +29,7 @@
         </div>
 
         <div class="hero-cta-container">
-            <button class="hero-cta">{{ 'hero.HERO_CTA' | translate }}</button>
+            <button class="hero-cta" (click)="scrollToContact()">{{ 'hero.HERO_CTA' | translate }}</button>
         </div>
     </div>
 
@@ -45,13 +45,13 @@
     </div>
 
     <div class="hero-socials-container">
-        <a href="#" class="hero-social-link">
+        <a href="https://github.com/debreczijanos" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub">
             <img src="/assets/images/icons/github.png" alt="GitHub" />
         </a>
-        <a href="#" class="hero-social-link">
+        <a href="https://linkedin.com/in/debreczi-janos-21847a1a4" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn">
             <img src="/assets/images/icons/Linkedin.png" alt="LinkedIn" />
         </a>
-        <a href="#" class="hero-social-link">
+        <a href="mailto:janos@debreczi.com" class="hero-social-link" aria-label="Email">
             <img src="/assets/images/icons/mail.png" alt="Mail" />
         </a>
     </div>

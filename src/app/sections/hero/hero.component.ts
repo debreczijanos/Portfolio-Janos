@@ -3,6 +3,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'app-hero',
   imports: [CommonModule, TranslateModule],
   templateUrl: './hero.component.html',
@@ -24,5 +25,12 @@ export class HeroComponent implements OnInit {
     this.translate.get('HERO_TITLE2').subscribe((text: string) => {
       this.title2Chars = text.split('');
     });
+  }
+
+  scrollToContact(): void {
+    const el = document.getElementById('contact');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }
