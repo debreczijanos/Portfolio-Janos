@@ -1,0 +1,289 @@
+@import "../../../styles/variables";
+
+.project-detail {
+  background: #1d1d1d;
+  background-image: url("/assets/images/project-bg.png");
+  font-family: $font-family-base;
+  font-size: $font-size-md;
+  min-height: 100vh;
+  background-size: 110% 100%;
+  color: #0b1220;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .project-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    min-height: 100vh;
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+    align-items: stretch;
+
+    .paper-pane {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 84px 60px 40px;
+
+      .back-link {
+        display: inline-flex;
+        gap: 8px;
+        font-weight: 700;
+        align-items: center;
+        color: #0e1013;
+        text-decoration: none;
+        margin-bottom: 24px;
+        line-height: 1;
+
+        &:hover .back-text {
+          color: $color-accent;
+        }
+      }
+
+      .back-link .back-icon {
+        height: 24px;
+        width: auto;
+        display: inline-block;
+      }
+
+      .project-title {
+        font-size: clamp(32px, 5vw, 64px);
+        margin: 12px 0 8px;
+        font-weight: 700;
+        font-size: 64px;
+      }
+
+      .section-line {
+        position: relative;
+        height: 20px;
+        width: 303px;
+        overflow: hidden;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          background: url("../../../assets/images/aboutMe/line.svg") no-repeat
+            left center;
+          background-size: auto 70%;
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+          z-index: 2;
+        }
+
+        &.active::after {
+          transform: scaleX(1);
+        }
+      }
+      .section {
+        margin: 16px 0 24px;
+
+        .section-heading {
+          // font-size: 20px;
+          font-weight: 700;
+          font-size: 24px;
+          margin: 0 0 8px;
+        }
+        .section-copy {
+          max-width: 60ch;
+          line-height: 1.6;
+          opacity: 0.9;
+        }
+      }
+      .meta {
+        margin-top: 16px;
+
+        .duration {
+          margin: 0 0 12px;
+        }
+        .stack {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          padding: 0;
+          margin: 0;
+
+          li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+
+          img {
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+    }
+  }
+
+  .dark-pane {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 34px 60px 12px;
+
+    .preview {
+      position: relative;
+      max-width: 760px;
+      width: 100%;
+      // overflow: hidden; /* prevent badge or shadows from causing horizontal scroll */
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+      }
+      .badge {
+        position: absolute;
+        right: -20px;
+        bottom: 22%;
+        width: 110px;
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 24px;
+        font-size: $font-size-md;
+        font-weight: 500;
+        font-family: "Bricolage Grotesque", sans-serif;
+        color: $color-text-light;
+        border: 1px solid $color-text-light;
+        border-radius: 100px;
+        overflow: hidden;
+        background: transparent;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 2px 4px 0px 0px $color-text-light;
+        cursor: pointer;
+        text-decoration: none;
+
+        &:hover {
+          transform: translateY(4px);
+          background-color: $color-accent;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .next-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: $color-text-light;
+
+      font-weight: 700;
+      text-decoration: none;
+      width: 100%;
+      justify-content: flex-end;
+      margin-top: 42px;
+      line-height: 1;
+
+      .next-icon {
+        height: 28px;
+        transform: scaleX(-1);
+      }
+    }
+
+    .next-link:hover .next-text {
+      color: $color-accent-hover;
+    }
+  }
+}
+
+/* Use selectors with equal-or-greater specificity than the base rules */
+@media (max-width: 1126px) {
+  .project-detail .project-layout .paper-pane {
+    padding: 60px 40px 50px 40px;
+  }
+  .project-detail .dark-pane .preview {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-detail {
+    background-image: url("/assets/images/noteBookPaperMobile.png");
+    background-position: center top;
+  }
+  .project-detail .project-layout {
+    grid-template-columns: 1fr;
+    // padding: 20px 20px;
+
+    .paper-pane,
+    .dark-pane {
+      padding: 64px 20px 20px 20px;
+    }
+
+    .paper-pane {
+      order: 1;
+
+      .project-title {
+        font-size: clamp(32px, 8vw, 48px);
+      }
+    }
+
+    .dark-pane {
+      order: 2;
+
+      .preview {
+        width: 100%;
+        max-width: 100%;
+
+        .badge {
+          width: 90px;
+          right: -10px;
+          bottom: 18%;
+        }
+      }
+
+      .actions {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .project-detail {
+    font-size: 16px;
+  }
+  .project-detail .project-layout .paper-pane {
+    padding: 60px 6px 6px 6px;
+  }
+  .project-detail .project-layout .paper-pane .section .section-heading {
+    font-size: 20px;
+  }
+  .project-detail .stack img {
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -2,60 +2,51 @@
     <div class="container">
         <header class="heading">
             <div class="line-container">
-                <span class="eyebrow">IN THEIR WORDS:</span>
+                <span class="eyebrow">{{ 'testimonials.EYEBROW' | translate }}</span>
                 <div class="line" id="testimonialsLine"></div>
             </div>
-            <h2>Colleagues' Thoughts</h2>
+            <h2>{{ 'testimonials.TITLE' | translate }}</h2>
         </header>
 
         <div class="cards">
-            <article class="card card--left" aria-label="Testimonial from Tobias Lange">
-                <p class="quote">
-                    Karl really kept the team together with his great organization and clear communication. We wouldn't
-                    have got this far without his commitment.
-                </p>
+            <article class="card card--left" [attr.aria-label]="'testimonials.CARD1_ARIA' | translate">
+                <p class="quote">{{ 'testimonials.Q1' | translate }}</p>
                 <footer class="meta">
                     <div class="author">
-                        <strong class="name">Tobias Lange</strong>
-                        <span class="role">Frontend Developer</span>
+                        <strong class="name">Michael Degasperi</strong>
+                        <span class="role">{{ 'testimonials.ROLE_FRONTEND' | translate }}</span>
                     </div>
-                    <a class="profile" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                    <a class="profile" href="#" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'testimonials.LINKEDIN_ARIA' | translate">
                         <img src="assets/images/testimonials/LinkedIn.png" alt="LinkedIn" />
-                        <span>Profile</span>
+                        <span>{{ 'testimonials.PROFILE' | translate }}</span>
                     </a>
                 </footer>
             </article>
 
-            <article class="card card--center" aria-label="Testimonial from Colleague 2">
-                <p class="quote">
-                    It's a pleasure to work with Karl. He knows how to motivate and encourage team members to deliver
-                    the best work possible, always adding great ideas in brainstorms.
-                </p>
+            <article class="card card--center" [attr.aria-label]="'testimonials.CARD2_ARIA' | translate">
+                <p class="quote">{{ 'testimonials.Q2' | translate }}</p>
                 <footer class="meta">
                     <div class="author">
-                        <strong class="name">Alex Meier</strong>
-                        <span class="role">Product Designer</span>
+                        <strong class="name">René Körner</strong>
+                        <span class="role">{{ 'testimonials.ROLE_FRONTEND' | translate }}</span>
                     </div>
-                    <a class="profile" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                    <a class="profile" href="#" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'testimonials.LINKEDIN_ARIA' | translate">
                         <img src="assets/images/testimonials/LinkedIn.png" alt="LinkedIn" />
-                        <span>Profile</span>
+                        <span>{{ 'testimonials.PROFILE' | translate }}</span>
                     </a>
                 </footer>
             </article>
 
-            <article class="card card--right" aria-label="Testimonial from Colleague 3">
-                <p class="quote">
-                    As a team colleague, Karl's positive energy and willingness to take on challenges made a significant
-                    contribution to us reaching our goals.
-                </p>
+            <article class="card card--right" [attr.aria-label]="'testimonials.CARD3_ARIA' | translate">
+                <p class="quote">{{ 'testimonials.Q3' | translate }}</p>
                 <footer class="meta">
                     <div class="author">
-                        <strong class="name">Sofia Brandt</strong>
-                        <span class="role">QA Engineer</span>
+                        <strong class="name">Benjamin Aliu</strong>
+                        <span class="role">{{ 'testimonials.ROLE_FRONTEND' | translate }}</span>
                     </div>
-                    <a class="profile" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+                    <a class="profile" href="#" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'testimonials.LINKEDIN_ARIA' | translate">
                         <img src="assets/images/testimonials/LinkedIn.png" alt="LinkedIn" />
-                        <span>Profile</span>
+                        <span>{{ 'testimonials.PROFILE' | translate }}</span>
                     </a>
                 </footer>
             </article>

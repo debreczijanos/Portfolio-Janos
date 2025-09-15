@@ -25,6 +25,13 @@ header {
     color: $color-text;
   }
 }
+
+/* Project detail pages: first two items over light paper need dark text */
+.header--project {
+  .nav-content ul li:nth-child(-n + 2) {
+    color: $color-text; /* dark text */
+  }
+}
 .language-toggle {
   display: flex;
   align-items: center;
@@ -151,6 +158,23 @@ nav {
   background-color: transparent;
 }
 
+/* Mobile burger (hidden by default) */
+.burger {
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  color: $color-text-light;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  margin: 4px 0;
+  background: currentColor;
+}
+
 .nav-content {
   flex: 1;
   display: flex;
@@ -245,4 +269,94 @@ nav {
     width: 40px;
     height: 40px;
   }
+}
+
+/* Hide desktop nav on small screens, show burger */
+@media (max-width: 900px) {
+  .burger { display: inline-block; }
+  .nav-content { display: none; }
+  .language-toggle { display: none; }
+}
+
+/* Mobile overlay menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 200;
+}
+.mobile-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-menu__inner {
+  position: absolute;
+  inset: 0;
+  padding: 16px 20px 32px;
+  background: #000 url('/assets/images/ace.png') center top/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-menu__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mobile-menu__top .close {
+  background: transparent;
+  border: 0;
+  font-size: 28px;
+  line-height: 1;
+  color: $color-text-light;
+  padding: 8px;
+}
+.mobile-logo { width: 40px; height: 40px; }
+
+.mobile-nav { list-style: none; padding: 24px 0 8px; margin: 0; }
+.mobile-nav li { text-align: left; }
+.mobile-nav a {
+  display: block;
+  padding: 14px 0;
+  color: $color-text-light;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.mobile-lang {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $color-text-light;
+  margin: 8px 0 24px;
+}
+.mobile-lang .lang { cursor: pointer; }
+.mobile-lang .lang.active { color: $color-accent; }
+
+.mobile-social {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 100%;
+    border: solid 1px $color-text-light;
+    padding: 4px;
+    transition: background-color 0.3s ease-in-out;
+    &:hover { background-color: $color-primary; }
+  }
+
+  img { width: 32px; height: 32px; filter: invert(1); }
+}
+
+@media (min-width: 901px) {
+  .mobile-menu { display: none; }
 }

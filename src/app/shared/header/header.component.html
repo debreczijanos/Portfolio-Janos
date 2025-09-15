@@ -1,27 +1,71 @@
-<header [class.header--solid]="solidHeader">
-    <nav>
-        <div class="logo">
-            <img src="assets/images/logo/logoBlue.png" alt="logo">
-        </div>
-        <div class="nav-content">
-            <ul>
-                <li><a href="/" (click)="goTo('about', $event)">{{ 'header.ABOUT_ME' | translate }}</a></li>
-                <li><a href="/" (click)="goTo('skills', $event)">{{ 'header.SKILLS' | translate }}</a></li>
-                <li><a href="/" (click)="goTo('projects', $event)">{{ 'header.PROJECTS' | translate }}</a></li>
-                <li><a href="/" (click)="goTo('contact', $event)">{{ 'header.CONTACT' | translate }}</a></li>
-            </ul>
-        </div>
-        <div class="language-toggle">
-            <span class="lang-label" [class.active]="currentLang === 'en'"
-                [class.show-img-frame]="hoveredLang === 'en' && currentLang !== 'en'" (mouseenter)="hoveredLang = 'en'"
-                (mouseleave)="hoveredLang = null" (click)="setLanguage('en')">EN</span>
-            <label class="switch">
-                <input type="checkbox" (change)="toggleLanguage()" [checked]="currentLang === 'de'">
-                <span class="slider round"></span>
-            </label>
-            <span class="lang-label" [class.active]="currentLang === 'de'"
-                [class.show-img-frame]="hoveredLang === 'de' && currentLang !== 'de'" (mouseenter)="hoveredLang = 'de'"
-                (mouseleave)="hoveredLang = null" (click)="setLanguage('de')">DE</span>
-        </div>
-    </nav>
+<header [class.header--solid]="solidHeader" [class.header--project]="isProjectRoute">
+  <nav>
+    <div class="logo">
+      <img src="assets/images/logo/logoBlue.png" alt="logo" />
+    </div>
+
+    <button class="burger" type="button" aria-label="Menu" (click)="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-content">
+      <ul>
+        <li><a href="/" (click)="goTo('about', $event)">{{ 'header.ABOUT_ME' | translate }}</a></li>
+        <li><a href="/" (click)="goTo('skills', $event)">{{ 'header.SKILLS' | translate }}</a></li>
+        <li><a href="/" (click)="goTo('projects', $event)">{{ 'header.PROJECTS' | translate }}</a></li>
+        <li><a href="/" (click)="goTo('contact', $event)">{{ 'header.CONTACT' | translate }}</a></li>
+      </ul>
+    </div>
+
+    <div class="language-toggle">
+      <span class="lang-label" [class.active]="currentLang === 'en'"
+        [class.show-img-frame]="hoveredLang === 'en' && currentLang !== 'en'" (mouseenter)="hoveredLang = 'en'"
+        (mouseleave)="hoveredLang = null" (click)="setLanguage('en')">EN</span>
+      <label class="switch">
+        <input type="checkbox" (change)="toggleLanguage()" [checked]="currentLang === 'de'" />
+        <span class="slider round"></span>
+      </label>
+      <span class="lang-label" [class.active]="currentLang === 'de'"
+        [class.show-img-frame]="hoveredLang === 'de' && currentLang !== 'de'" (mouseenter)="hoveredLang = 'de'"
+        (mouseleave)="hoveredLang = null" (click)="setLanguage('de')">DE</span>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay menu -->
+  <div class="mobile-menu" [class.open]="menuOpen" (click)="closeMenu()">
+    <div class="mobile-menu__inner" (click)="$event.stopPropagation()">
+      <div class="mobile-menu__top">
+        <img class="mobile-logo" src="assets/images/logo/logoBlue.png" alt="logo" />
+        <button class="close" type="button" aria-label="Close" (click)="closeMenu()">×</button>
+      </div>
+
+      <ul class="mobile-nav">
+        <li><a href="/" (click)="goTo('about', $event); closeMenu()">{{ 'header.ABOUT_ME' | translate }}</a></li>
+        <li><a href="/" (click)="goTo('skills', $event); closeMenu()">{{ 'header.SKILLS' | translate }}</a></li>
+        <li><a href="/" (click)="goTo('projects', $event); closeMenu()">{{ 'header.PROJECTS' | translate }}</a></li>
+        <li><a href="/" (click)="goTo('contact', $event); closeMenu()">{{ 'header.CONTACT' | translate }}</a></li>
+      </ul>
+
+      <div class="mobile-lang">
+        <span class="lang" [class.active]="currentLang === 'en'" (click)="setLanguage('en')">EN</span>
+        <label class="switch">
+          <input type="checkbox" (change)="toggleLanguage()" [checked]="currentLang === 'de'" />
+          <span class="slider round"></span>
+        </label>
+        <span class="lang" [class.active]="currentLang === 'de'" (click)="setLanguage('de')">DE</span>
+      </div>
+
+      <div class="mobile-social">
+        <a href="https://linkedin.com/in/debreczi-janos-21847a1a4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img src="assets/images/icons/Linkedin.png" alt="LinkedIn" />
+        </a>
+        <a href="https://github.com/debreczijanos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <img src="assets/images/icons/github.png" alt="GitHub" />
+        </a>
+        <a href="mailto:janos@debreczi.com" aria-label="Email">
+          <img src="assets/images/icons/mail.png" alt="Email" />
+        </a>
+      </div>
+    </div>
+  </div>
 </header>

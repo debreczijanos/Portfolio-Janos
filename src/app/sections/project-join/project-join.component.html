@@ -1,0 +1,63 @@
+<section class="project-detail">
+  <div class="project-layout">
+    <!-- LEFT: Paper content -->
+    <div class="paper-pane">
+      <a class="back-link" routerLink="/">
+        <img class="back-icon" src="/assets/images/projects/Back_Next_Orange.png" alt="Back" />
+        <span class="back-text">{{ 'projectJoin.BACK' | translate }}</span>
+      </a>
+
+      <h1 class="project-title">{{ 'projectJoin.TITLE' | translate }}</h1>
+      <div id="sectionLine" class="section-line"></div>
+
+      <div class="section">
+        <h2 class="section-heading">{{ 'projectJoin.DESC_TITLE' | translate }}</h2>
+        <p class="section-copy">{{ 'projectJoin.DESC_TEXT' | translate }}</p>
+      </div>
+
+      <div class="section">
+        <h2 class="section-heading">{{ 'projectJoin.IMPL_TITLE' | translate }}</h2>
+        <p class="section-copy">{{ 'projectJoin.IMPL_TEXT' | translate }}</p>
+      </div>
+
+      <div class="meta">
+        <p class="duration"><strong>{{ 'projectJoin.DURATION' | translate }}</strong> {{ 'projectJoin.DURATION_VALUE' |
+          translate }}</p>
+        <ul class="stack" aria-label="Tech stack">
+          <li><img src="/assets/images/skills/javascript.svg" alt="JavaScript" />JavaScript</li>
+          <li><img src="/assets/images/skills/css.svg" alt="CSS" />CSS</li>
+          <li><img src="/assets/images/skills/html.svg" alt="HTML" />HTML</li>
+          <li><img src="/assets/images/skills/firebase.svg" alt="Firebase" />Firebase</li>
+
+        </ul>
+      </div>
+
+
+    </div>
+
+    <!-- RIGHT: Dark preview -->
+    <div class="dark-pane">
+      <div class="preview">
+        <img src="/assets/images/projects/join.png" alt="Join app screenshot" />
+        <div class="badge">
+          <img src="/assets/images/projects/FeauturedProject.png" alt="featured project" />
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn--ghost" href="https://github.com/debreczijanos/Join-Original.git" target="_blank"
+          rel="noopener noreferrer">{{ 'projectJoin.GITHUB' |
+          translate
+          }}</a>
+        <a class="btn btn--ghost" href="#" target="_blank" rel="noopener noreferrer">{{ 'projectJoin.LIVE' | translate
+          }}</a>
+      </div>
+
+
+      <a class="next-link" routerLink="/projects/el-pollo-loco">
+        <span class="next-text">{{ 'projectJoin.NEXT' | translate }}</span>
+        <img class="next-icon" src="/assets/images/projects/Back_Next.png" alt="Next project" />
+      </a>
+    </div>
+  </div>
+</section>

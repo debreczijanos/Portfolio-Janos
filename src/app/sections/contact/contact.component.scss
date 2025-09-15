@@ -128,7 +128,7 @@ section::before {
   gap: 6px; // Abstand zwischen Label, Feld und Fehlermeldung
 
   &:hover {
-    border-top: 1px solid $color-primary;
+    // border-top: 1px solid $color-primary;
     .form__label {
       color: $color-accent;
     }
@@ -149,7 +149,7 @@ section::before {
 }
 
 .form__error {
-  min-height: 18px; // reserviert Platz, damit die Form nicht springt
+  min-height: 36px; // reserviert Platz, damit die Form nicht springt
   color: $color-accent;
   font-size: $font-size-sm;
   padding: 0 24px 4px 24px;

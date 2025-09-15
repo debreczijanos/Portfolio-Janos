@@ -84,5 +84,31 @@
     "INDEMNITY_TEXT": "You agree to indemnify, defend and hold harmless us, the listed students, the <a href=\"https://developerakademie.com\" target=\"_blank\" rel=\"noopener noreferrer\">Developer Akademie</a>, and our affiliates, partners, officers, directors, agents, and employees, from and against any claim, demand, loss, damage, cost, or liability (including reasonable legal fees) arising out of or relating to your use of <a href=\"#\">Portfolio</a> and/or your breach of this Legal Notice.",
     "CONTACT_QUESTIONS": "For any questions or notices, please contact us at [Contact Email].",
     "LAST_UPDATED": "Last updated: {{date}}"
+  },
+  "testimonials": {
+    "EYEBROW": "IN THEIR WORDS:",
+    "TITLE": "Colleagues' Thoughts",
+    "CARD1_ARIA": "Testimonial from Michael Degasperi",
+    "CARD2_ARIA": "Testimonial from René Körner",
+    "CARD3_ARIA": "Testimonial from Benjamin Aliu",
+    "Q1": "János really kept the team together with his great organization and clear communication. We wouldn't have got this far without his commitment.",
+    "Q2": "It's a pleasure to work with János. He knows how to motivate and encourage team members to deliver the best work possible, always adding great ideas in brainstorms.",
+    "Q3": "As a team colleague, János' positive energy and willingness to take on challenges made a significant contribution to us reaching our goals.",
+    "ROLE_FRONTEND": "Frontend Developer",
+    "PROFILE": "Profile",
+    "LINKEDIN_ARIA": "LinkedIn profile"
+  },
+  "projectJoin": {
+    "BACK": "Go Back",
+    "TITLE": "Join",
+    "DESC_TITLE": "Description",
+    "DESC_TEXT": "Task manager inspired by the Kanban system. Create and organize tasks using drag and drop functions, assign users and categories.",
+    "IMPL_TITLE": "Implementation Details",
+    "IMPL_TEXT": "Short text that describes your role or the workflow for this specific project. Let a recruiter know more about your knowledge and ability to work independently or collaboratively in a structured way.",
+    "DURATION": "Duration:",
+    "DURATION_VALUE": "5 weeks",
+    "GITHUB": "GitHub",
+    "LIVE": "Live Test",
+    "NEXT": "Next Project"
   }
 }

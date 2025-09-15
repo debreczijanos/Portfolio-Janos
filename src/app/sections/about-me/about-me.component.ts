@@ -43,4 +43,12 @@ export class AboutMeComponent implements AfterViewInit {
       }
     });
   }
+
+  scrollToContact(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const el = document.getElementById('contact');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }

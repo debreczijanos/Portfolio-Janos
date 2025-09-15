@@ -83,5 +83,31 @@
     "INDEMNITY_TEXT": "Sie erklären sich damit einverstanden, uns, die aufgeführten Studierenden, die <a href=\"https://developerakademie.com\" target=\"_blank\" rel=\"noopener noreferrer\">Developer Akademie</a> sowie unsere verbundenen Unternehmen, Partner, Führungskräfte, Direktoren, Beauftragten und Mitarbeitenden von jeglichen Ansprüchen, Forderungen, Verlusten, Schäden, Kosten oder Haftungen (einschließlich angemessener Anwaltsgebühren) freizustellen, zu verteidigen und schadlos zu halten, die sich aus Ihrer Nutzung von <a href=\"#\">Portfolio</a> und/oder Ihrem Verstoß gegen diesen Rechtshinweis ergeben.",
     "CONTACT_QUESTIONS": "Für Fragen oder Hinweise kontaktieren Sie uns bitte unter [Kontakt-E-Mail].",
     "LAST_UPDATED": "Letzte Aktualisierung: {{date}}"
+  },
+  "testimonials": {
+    "EYEBROW": "IN IHREN WORTEN:",
+    "TITLE": "Stimmen der Kollegen",
+    "CARD1_ARIA": "Referenz von Michael Degasperi",
+    "CARD2_ARIA": "Referenz von René Körner",
+    "CARD3_ARIA": "Referenz von Benjamin Aliu",
+    "Q1": "János hat das Team mit seiner großartigen Organisation und klaren Kommunikation wirklich zusammengehalten. Ohne sein Engagement wären wir nicht so weit gekommen.",
+    "Q2": "Es ist eine Freude, mit János zu arbeiten. Er weiß, wie man Teammitglieder motiviert und ermutigt, ihr Bestes zu geben, und bringt in Brainstormings immer großartige Ideen ein.",
+    "Q3": "Als Teamkollege trug János' positive Energie und seine Bereitschaft, Herausforderungen anzunehmen, maßgeblich dazu bei, dass wir unsere Ziele erreicht haben.",
+    "ROLE_FRONTEND": "Frontend-Entwickler",
+    "PROFILE": "Profil",
+    "LINKEDIN_ARIA": "LinkedIn-Profil"
+  },
+  "projectJoin": {
+    "BACK": "Zurück",
+    "TITLE": "Join",
+    "DESC_TITLE": "Beschreibung",
+    "DESC_TEXT": "Task-Manager inspiriert vom Kanban-System. Erstellen und Organisieren von Aufgaben mit Drag-and-Drop, Zuweisen von Benutzern und Kategorien.",
+    "IMPL_TITLE": "Implementierungsdetails",
+    "IMPL_TEXT": "Kurzer Text, der deine Rolle oder den Ablauf bei diesem Projekt beschreibt. So erfährt ein Recruiter mehr über dein Wissen und deine Fähigkeit, strukturiert eigenständig oder im Team zu arbeiten.",
+    "DURATION": "Dauer:",
+    "DURATION_VALUE": "5 Wochen",
+    "GITHUB": "GitHub",
+    "LIVE": "Live-Test",
+    "NEXT": "Nächstes Projekt"
   }
 }

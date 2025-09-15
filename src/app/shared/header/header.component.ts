@@ -14,6 +14,8 @@ export class HeaderComponent {
   currentLang: 'en' | 'de' = 'de';
   hoveredLang: 'en' | 'de' | null = null;
   solidHeader = false;
+  isProjectRoute = false;
+  menuOpen = false;
 
   constructor(private translate: TranslateService, private router: Router) {
     this.translate.setDefaultLang(this.currentLang);
@@ -21,12 +23,14 @@ export class HeaderComponent {
 
     // Set initial header style based on current URL
     this.solidHeader = !this.isTransparentRoute(this.router.url);
+    this.isProjectRoute = this.router.url.startsWith('/projects/');
 
     // Update on navigation
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => {
         this.solidHeader = !this.isTransparentRoute(this.router.url);
+        this.isProjectRoute = this.router.url.startsWith('/projects/');
       });
   }
 
@@ -41,8 +45,12 @@ export class HeaderComponent {
   }
 
   private isTransparentRoute(url: string): boolean {
-    // Keep header transparent on home and legal notice so it overlays the hero
-    return url === '/' || url.startsWith('/legal-notice');
+    // Keep header transparent on home, legal notice, and project detail pages
+    return (
+      url === '/' ||
+      url.startsWith('/legal-notice') ||
+      url.startsWith('/projects/')
+    );
   }
 
   goTo(sectionId: 'about' | 'skills' | 'projects' | 'contact', event?: Event) {
@@ -59,5 +67,15 @@ export class HeaderComponent {
     } else {
       this.router.navigateByUrl('/').then(() => setTimeout(scroll));
     }
+  }
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    document.body.style.overflow = this.menuOpen ? 'hidden' : '';
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
+    document.body.style.overflow = '';
   }
 }
