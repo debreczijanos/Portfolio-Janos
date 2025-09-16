@@ -78,4 +78,28 @@ export class HeaderComponent {
     this.menuOpen = false;
     document.body.style.overflow = '';
   }
+
+  onMobileNav(event: Event, sectionId: 'about' | 'skills' | 'projects' | 'contact') {
+    event.preventDefault();
+    const anchor = event.currentTarget as HTMLElement | null;
+    if (anchor) {
+      anchor.classList.add('pressed');
+    }
+    // allow the pressed animation to show before navigating/closing
+    setTimeout(() => {
+      this.goTo(sectionId);
+      this.closeMenu();
+      if (anchor) anchor.classList.remove('pressed');
+    }, 220);
+  }
+
+  onMobileLangTap(lang: 'en' | 'de', event?: Event) {
+    if (event) event.preventDefault();
+    // Briefly show the hover frame on mobile before switching
+    this.hoveredLang = lang;
+    setTimeout(() => {
+      this.setLanguage(lang);
+      this.hoveredLang = null;
+    }, 180);
+  }
 }

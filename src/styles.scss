@@ -1,5 +1,5 @@
-@import './_fonts';
-@import './styles/variables';
+@import "./_fonts";
+@import "./styles/variables";
 
 * {
   box-sizing: border-box;
@@ -7,11 +7,11 @@
   padding: 0;
 }
 
-html, body {
-  font-family: 'Inter', sans-serif;
+html,
+body {
+  font-family: $font-family-base;
   margin: 0;
   padding: 0;
-  background-color: #F8F9FA;
+  background-color: #f8f9fa;
   scroll-behavior: smooth;
 }
- 

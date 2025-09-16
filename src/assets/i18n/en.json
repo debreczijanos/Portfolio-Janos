@@ -110,5 +110,18 @@
     "GITHUB": "GitHub",
     "LIVE": "Live Test",
     "NEXT": "Next Project"
+  },
+  "projectPollo": {
+    "BACK": "Go Back",
+    "TITLE": "El Pollo Loco",
+    "DESC_TITLE": "Description",
+    "DESC_TEXT": "Jump, run and throw game based on object-oriented approach. Help Pepe find coins and tabasco salsa to fight against the crazy hen.",
+    "IMPL_TITLE": "Implementation Details",
+    "IMPL_TEXT": "Short text that describes your role or the workflow for this specific project. Let a recruiter know more about your knowledge and ability to work independently or collaboratively in a structured way.",
+    "DURATION": "Duration:",
+    "DURATION_VALUE": "4 weeks",
+    "GITHUB": "GitHub",
+    "LIVE": "Live Test",
+    "NEXT": "Next Project"
   }
 }

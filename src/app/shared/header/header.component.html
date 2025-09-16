@@ -40,19 +40,37 @@
       </div>
 
       <ul class="mobile-nav">
-        <li><a href="/" (click)="goTo('about', $event); closeMenu()">{{ 'header.ABOUT_ME' | translate }}</a></li>
-        <li><a href="/" (click)="goTo('skills', $event); closeMenu()">{{ 'header.SKILLS' | translate }}</a></li>
-        <li><a href="/" (click)="goTo('projects', $event); closeMenu()">{{ 'header.PROJECTS' | translate }}</a></li>
-        <li><a href="/" (click)="goTo('contact', $event); closeMenu()">{{ 'header.CONTACT' | translate }}</a></li>
+        <li><a href="/" (click)="onMobileNav($event, 'about')">{{ 'header.ABOUT_ME' | translate }}</a></li>
+        <li><a href="/" (click)="onMobileNav($event, 'skills')">{{ 'header.SKILLS' | translate }}</a></li>
+        <li><a href="/" (click)="onMobileNav($event, 'projects')">{{ 'header.PROJECTS' | translate }}</a></li>
+        <li><a href="/" (click)="onMobileNav($event, 'contact')">{{ 'header.CONTACT' | translate }}</a></li>
       </ul>
 
       <div class="mobile-lang">
-        <span class="lang" [class.active]="currentLang === 'en'" (click)="setLanguage('en')">EN</span>
+        <span class="lang"
+              [class.active]="currentLang === 'en'"
+              [class.show-img-frame]="hoveredLang === 'en' && currentLang !== 'en'"
+              (mouseenter)="hoveredLang = 'en'"
+              (mouseleave)="hoveredLang = null"
+              (pointerdown)="hoveredLang = 'en'"
+              (pointerup)="hoveredLang = null"
+              (touchstart)="hoveredLang = 'en'"
+              (touchend)="hoveredLang = null"
+              (click)="onMobileLangTap('en', $event)">EN</span>
         <label class="switch">
           <input type="checkbox" (change)="toggleLanguage()" [checked]="currentLang === 'de'" />
           <span class="slider round"></span>
         </label>
-        <span class="lang" [class.active]="currentLang === 'de'" (click)="setLanguage('de')">DE</span>
+        <span class="lang"
+              [class.active]="currentLang === 'de'"
+              [class.show-img-frame]="hoveredLang === 'de' && currentLang !== 'de'"
+              (mouseenter)="hoveredLang = 'de'"
+              (mouseleave)="hoveredLang = null"
+              (pointerdown)="hoveredLang = 'de'"
+              (pointerup)="hoveredLang = null"
+              (touchstart)="hoveredLang = 'de'"
+              (touchend)="hoveredLang = null"
+              (click)="onMobileLangTap('de', $event)">DE</span>
       </div>
 
       <div class="mobile-social">

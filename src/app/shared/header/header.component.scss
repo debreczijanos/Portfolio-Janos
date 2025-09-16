@@ -217,7 +217,8 @@ nav {
         background-image: url("/assets/images/hoverImg/aboutMeHover.png");
         clip-path: inset(0 0 100% 0);
       }
-      &:first-child:hover::before {
+      &:first-child:hover::before,
+      &:first-child:active::before {
         clip-path: inset(0 0 0 0);
       }
 
@@ -226,7 +227,8 @@ nav {
         background-image: url("/assets/images/hoverImg/skillsHover.png");
         clip-path: inset(0 100% 0 0);
       }
-      &:nth-child(2):hover::before {
+      &:nth-child(2):hover::before,
+      &:nth-child(2):active::before {
         clip-path: inset(0 0 0 0);
       }
 
@@ -235,7 +237,8 @@ nav {
         background-image: url("/assets/images/hoverImg/projectsHover.png");
         clip-path: inset(0 100% 0 0);
       }
-      &:nth-child(3):hover::before {
+      &:nth-child(3):hover::before,
+      &:nth-child(3):active::before {
         clip-path: inset(0 0 0 0);
       }
 
@@ -244,7 +247,8 @@ nav {
         background-image: url("/assets/images/hoverImg/contactHover.png");
         clip-path: inset(0 100% 0 0);
       }
-      &:nth-child(4):hover::before {
+      &:nth-child(4):hover::before,
+      &:nth-child(4):active::before {
         clip-path: inset(0 0 0 0);
       }
     }
@@ -273,17 +277,24 @@ nav {
 
 /* Hide desktop nav on small screens, show burger */
 @media (max-width: 900px) {
-  .burger { display: inline-block; }
-  .nav-content { display: none; }
-  .language-toggle { display: none; }
+  .burger {
+    display: inline-block;
+  }
+  .nav-content {
+    display: none;
+  }
+  .language-toggle {
+    display: none;
+  }
 }
 
 /* Mobile overlay menu */
 .mobile-menu {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.7);
   opacity: 0;
+  height: 100vh;
   pointer-events: none;
   transition: opacity 0.25s ease;
   z-index: 200;
@@ -296,9 +307,10 @@ nav {
   position: absolute;
   inset: 0;
   padding: 16px 20px 32px;
-  background: #000 url('/assets/images/ace.png') center top/cover no-repeat;
+  background: url("/assets/images/ace.png") center top/cover no-repeat;
   display: flex;
   flex-direction: column;
+  height: 70%;
 }
 .mobile-menu__top {
   display: flex;
@@ -313,17 +325,30 @@ nav {
   color: $color-text-light;
   padding: 8px;
 }
-.mobile-logo { width: 40px; height: 40px; }
+.mobile-logo {
+  width: 40px;
+  height: 40px;
+}
 
-.mobile-nav { list-style: none; padding: 24px 0 8px; margin: 0; }
-.mobile-nav li { text-align: left; }
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  gap: 32px;
+  padding: 24px 0 8px;
+  margin: 0;
+}
+.mobile-nav li {
+  text-align: left;
+}
 .mobile-nav a {
   display: block;
   padding: 14px 0;
   color: $color-text-light;
   text-decoration: none;
   font-weight: 700;
-  font-size: 20px;
+  font-size: $font-size-md;
 }
 
 .mobile-lang {
@@ -331,15 +356,113 @@ nav {
   align-items: center;
   gap: 10px;
   color: $color-text-light;
-  margin: 8px 0 24px;
+  font-size: $font-size-base;
+  font-weight: 600;
+  margin: 24px 0 24px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1; /* ensure hover frame is above background layers */
 }
-.mobile-lang .lang { cursor: pointer; }
-.mobile-lang .lang.active { color: $color-accent; }
+.mobile-lang .lang {
+  cursor: pointer;
+  position: relative;
+  padding: 4px 8px;
+  transition: color 0.3s;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background-image: url("/assets/images/hoverImg/toggleLanguage.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    z-index: -1;
+    clip-path: circle(0% at 0% 0%);
+    transition: opacity 0.3s;
+    pointer-events: none;
+    transform: rotate(-180deg);
+  }
+
+  &:hover:not(.active)::before {
+    opacity: 1;
+    animation: circle-reveal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform: rotate(-180deg);
+  }
+
+  &:active:not(.active)::before {
+    opacity: 1;
+    animation: circle-reveal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform: rotate(-180deg);
+  }
+}
+.mobile-lang .lang.active {
+  color: $color-accent;
+}
+
+/* mirror desktop .show-img-frame behavior on mobile */
+.mobile-lang .show-img-frame::before {
+  opacity: 1;
+  animation: circle-reveal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transform: rotate(-180deg);
+}
+
+/* mimic desktop switch in mobile overlay */
+.mobile-lang .switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 12px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $color-switch-bg;
+    transition: 0.4s;
+    border-radius: 34px;
+
+    &::before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 0px;
+      top: -2px;
+      bottom: 0px;
+      background-color: $color-primary;
+      transition: 0.4s;
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+  }
+  input:checked + .slider {
+    background-color: $color-accent;
+  }
+  input:checked + .slider::before {
+    transform: translateX(18px);
+  }
+}
 
 .mobile-social {
   display: flex;
+  padding-top: 32px;
   gap: 16px;
-  margin-top: auto;
+  justify-content: center;
 
   a {
     display: flex;
@@ -351,12 +474,87 @@ nav {
     border: solid 1px $color-text-light;
     padding: 4px;
     transition: background-color 0.3s ease-in-out;
-    &:hover { background-color: $color-primary; }
+    &:hover {
+      background-color: $color-primary;
+    }
   }
 
-  img { width: 32px; height: 32px; filter: invert(1); }
+  img {
+    width: 32px;
+    height: 32px;
+    /* force icon to pure white regardless of source color */
+    filter: brightness(0) invert(1);
+  }
 }
 
 @media (min-width: 901px) {
-  .mobile-menu { display: none; }
+  .mobile-menu {
+    display: none;
+  }
+}
+.mobile-nav a {
+  position: relative;
+}
+.mobile-nav a::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  right: -20px;
+  bottom: -10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  z-index: 0;
+  pointer-events: none;
+  transition: clip-path 0.3s linear, opacity 0.3s;
+}
+
+/* 1. About me (von oben nach unten) */
+.mobile-nav li:nth-child(1) a::before {
+  background-image: url("/assets/images/hoverImg/aboutMeHover.png");
+  clip-path: inset(0 0 100% 0);
+}
+.mobile-nav li:nth-child(1) a:hover::before,
+.mobile-nav li:nth-child(1) a:active::before,
+.mobile-nav li:nth-child(1) a:focus-visible::before,
+.mobile-nav li:nth-child(1) a.pressed::before {
+  clip-path: inset(0 0 0 0);
+}
+
+/* 2. Skills (von links nach rechts) */
+.mobile-nav li:nth-child(2) a::before {
+  background-image: url("/assets/images/hoverImg/skillsHover.png");
+  clip-path: inset(0 100% 0 0);
+}
+.mobile-nav li:nth-child(2) a:hover::before,
+.mobile-nav li:nth-child(2) a:active::before,
+.mobile-nav li:nth-child(2) a:focus-visible::before,
+.mobile-nav li:nth-child(2) a.pressed::before {
+  clip-path: inset(0 0 0 0);
+}
+
+/* 3. Projects (von links nach rechts) */
+.mobile-nav li:nth-child(3) a::before {
+  background-image: url("/assets/images/hoverImg/projectsHover.png");
+  clip-path: inset(0 100% 0 0);
+}
+.mobile-nav li:nth-child(3) a:hover::before,
+.mobile-nav li:nth-child(3) a:active::before,
+.mobile-nav li:nth-child(3) a:focus-visible::before,
+.mobile-nav li:nth-child(3) a.pressed::before {
+  clip-path: inset(0 0 0 0);
+}
+
+/* 4. Contact (von links nach rechts) */
+.mobile-nav li:nth-child(4) a::before {
+  background-image: url("/assets/images/hoverImg/contactHover.png");
+  clip-path: inset(0 100% 0 0);
+}
+.mobile-nav li:nth-child(4) a:hover::before,
+.mobile-nav li:nth-child(4) a:active::before,
+.mobile-nav li:nth-child(4) a:focus-visible::before,
+.mobile-nav li:nth-child(4) a.pressed::before {
+  clip-path: inset(0 0 0 0);
 }

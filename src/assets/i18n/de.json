@@ -109,5 +109,18 @@
     "GITHUB": "GitHub",
     "LIVE": "Live-Test",
     "NEXT": "Nächstes Projekt"
+  },
+  "projectPollo": {
+    "BACK": "Zurück",
+    "TITLE": "El Pollo Loco",
+    "DESC_TITLE": "Beschreibung",
+    "DESC_TEXT": "Spring-, Lauf- und Wurfspiel basierend auf einem objektorientierten Ansatz. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen das verrückte Huhn zu kämpfen.",
+    "IMPL_TITLE": "Implementierungsdetails",
+    "IMPL_TEXT": "Kurzer Text, der deine Rolle oder den Ablauf bei diesem Projekt beschreibt. So erfährt ein Recruiter mehr über dein Wissen und deine Fähigkeit, strukturiert eigenständig oder im Team zu arbeiten.",
+    "DURATION": "Dauer:",
+    "DURATION_VALUE": "4 Wochen",
+    "GITHUB": "GitHub",
+    "LIVE": "Live-Test",
+    "NEXT": "Nächstes Projekt"
   }
 }
