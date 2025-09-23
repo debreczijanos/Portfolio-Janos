@@ -50,34 +50,28 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initSectionLineObserver(): void {
-    const contactLine = document.getElementById('contact-scribble');
-    if (contactLine) {
-      this.observer = this.createIntersectionObserver(contactLine);
-      this.observer.observe(contactLine);
-    }
-  }
+    const scribbles = document.querySelectorAll<HTMLElement>('.contact__scribble');
+    if (!scribbles.length) return;
 
-  private createIntersectionObserver(
-    contactLine: HTMLElement
-  ): IntersectionObserver {
-    return new IntersectionObserver(
-      (entries) => this.handleIntersection(entries, contactLine),
+    // One observer for all scribbles; toggles 'active' per target
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            el.classList.add('active');
+          } else {
+            el.classList.remove('active');
+          }
+        });
+      },
       { threshold: 0.1, rootMargin: '-50px 0px -50px 0px' }
     );
+
+    scribbles.forEach((el) => this.observer!.observe(el));
   }
 
-  private handleIntersection(
-    entries: IntersectionObserverEntry[],
-    contactLine: HTMLElement
-  ): void {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        contactLine.classList.add('active');
-      } else {
-        contactLine.classList.remove('active');
-      }
-    });
-  }
+  // Legacy helper functions kept during refactor; not used anymore
 
   ngOnDestroy(): void {
     this.observer?.disconnect();

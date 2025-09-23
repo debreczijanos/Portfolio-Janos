@@ -8,8 +8,8 @@
 
             <p class="contact__lead">{{ 'contact.LEAD1' | translate }}</p>
             <p class="contact__lead">{{ 'contact.LEAD2' | translate }}</p>
-            <div class="contact__scribble-container">
-                <div class="contact__scribble" id="contact-scribble"></div>
+            <div class="contact__scribble-container contact__scribble-container--desktop">
+                <div class="contact__scribble" id="contact-scribble-desktop"></div>
             </div>
 
         </div>
@@ -69,6 +69,10 @@
             <div class="form__actions">
                 <p class="form__notice success" *ngIf="sent">{{ 'contact.SEND_SUCCESS' | translate }}</p>
                 <p class="form__notice error" *ngIf="sendError">{{ 'contact.SEND_ERROR' | translate }}</p>
+                <!-- Desktop scribble aligned with the button -->
+                <div class="contact__scribble-container contact__scribble-container--mobile">
+                    <div class="contact__scribble" id="contact-scribble-mobile"></div>
+                </div>
                 <button class="btn btn--pill" type="submit" [disabled]="contactForm.invalid || sending">{{ sending ? ('contact.SENDING' | translate) : ('contact.SEND' | translate) }}</button>
             </div>
         </form>
