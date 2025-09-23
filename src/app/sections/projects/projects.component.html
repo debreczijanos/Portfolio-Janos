@@ -19,12 +19,15 @@
                     <button class="project-btn" routerLink="/projects/join">{{ 'projects.PROJECTS_BTN' | translate }}</button>
                 </div>
 
+                <!-- Badge moved inside so it follows the image container -->
+                <div class="badge"><img src="assets/images/projects/Sticker.png" alt=""></div>
             </div>
-            <div class="badge"><img src="assets/images/projects/Sticker.png" alt=""></div>
 
             <div class="project-info">
                 <h3>Join</h3>
                 <p>{{ 'projects.PROJECTS_JOIN' | translate }}</p>
+                <!-- Inline CTA for >=600px -->
+                <button class="project-btn project-btn--inline" routerLink="/projects/join">{{ 'projects.PROJECTS_BTN' | translate }}</button>
             </div>
         </div>
 
@@ -42,6 +45,8 @@
             <div class="project-info">
                 <h3>El Pollo Loco</h3>
                 <p>{{ 'projects.PROJECTS_POLLO' | translate }}</p>
+                <!-- Inline CTA for >=600px -->
+                <button class="project-btn project-btn--inline" routerLink="/projects/el-pollo-loco">{{ 'projects.PROJECTS_BTN' | translate }}</button>
             </div>
         </div>
 
