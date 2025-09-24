@@ -213,3 +213,24 @@
   opacity: 1;
   transform: translate(60%, -50%) scale(1) rotate(720deg);
 }
+
+@media (max-width: 640px) {
+  .contact__footer {
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center; /* alles mittig */
+    gap: 12px;
+  }
+  .contact__links {
+    gap: 46px;
+    flex-wrap: wrap;
+    justify-content: center; /* Zeilen mittig ausrichten */
+    text-align: center;
+  }
+
+  .contact__brand {
+    margin-bottom: 26px;
+    align-items: center; /* Logo + Text mittig */
+    text-align: center;
+  }
+}

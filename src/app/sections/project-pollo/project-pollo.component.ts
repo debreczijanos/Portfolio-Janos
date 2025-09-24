@@ -15,6 +15,8 @@ import { isPlatformBrowser } from '@angular/common';
 export class ProjectPolloComponent implements AfterViewInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
+  polloUrl = 'https://el-pollo-loco.debreczi.com';
+
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       setTimeout(() => this.initSectionLineObserver(), 100);
@@ -36,7 +38,10 @@ export class ProjectPolloComponent implements AfterViewInit {
     );
   }
 
-  private handleIntersection(entries: IntersectionObserverEntry[], line: HTMLElement): void {
+  private handleIntersection(
+    entries: IntersectionObserverEntry[],
+    line: HTMLElement
+  ): void {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         line.classList.add('active');

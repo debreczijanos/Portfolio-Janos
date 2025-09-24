@@ -49,10 +49,10 @@
           rel="noopener noreferrer">{{ 'projectJoin.GITHUB' |
           translate
           }}</a>
-        <a class="btn btn--ghost" href="#" target="_blank" rel="noopener noreferrer">{{ 'projectJoin.LIVE' | translate
+        <a class="btn btn--ghost" [href]="joinUrl" target="_blank" rel="noopener noreferrer">{{ 'projectJoin.LIVE' |
+          translate
           }}</a>
       </div>
-
 
       <a class="next-link" routerLink="/projects/el-pollo-loco">
         <span class="next-text">{{ 'projectJoin.NEXT' | translate }}</span>

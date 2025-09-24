@@ -251,6 +251,10 @@
 
 /* Behavior switch: below 600px, hide overlay and show inline button */
 @media (max-width: 600px) {
+  .projects-line {
+    width: 250px;
+  }
+
   .project-item .project-overlay {
     display: none !important;
   }

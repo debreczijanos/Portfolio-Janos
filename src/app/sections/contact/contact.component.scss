@@ -39,6 +39,7 @@ section::before {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    position: relative;
 
     .contact__overline {
       font-family: $font-family-base;
@@ -121,6 +122,7 @@ section::before {
    Mit exakt gleicher Spezifität wie die Intro-Regel. */
 .contact__form .form__actions .contact__scribble-container--mobile {
   display: flex;
+  max-width: 40%;
 }
 .contact__content .contact__intro .contact__scribble-container--desktop {
   display: none;
@@ -135,12 +137,21 @@ section::before {
 }
 
 .contact__badge {
-  position: absolute;
-  top: -46px;
-  right: -2px;
   width: 140px;
   height: auto;
   pointer-events: none;
+}
+.contact__badge--form {
+  position: absolute;
+  top: -46px;
+  right: -2px;
+  // display: none;
+}
+.contact__badge--intro {
+  position: absolute;
+  top: -100px;
+  right: 0;
+  display: none;
 }
 
 .form__group {
@@ -254,10 +265,10 @@ textarea:focus {
     height: 24px;
     /* In Flex-Containern kann ein Element trotz fester Breite schrumpfen.
        Diese drei Regeln machen die Checkbox wirklich „fix“. */
-    flex: 0 0 24px;       /* kein Shrink, kein Grow, Basis = 24px */
-    min-width: 24px;      /* nicht kleiner als 24px */
-    min-height: 24px;     /* nicht kleiner als 24px */
-    aspect-ratio: 1 / 1;  /* quadratisch, falls eine Seite überschrieben wird */
+    flex: 0 0 24px; /* kein Shrink, kein Grow, Basis = 24px */
+    min-width: 24px; /* nicht kleiner als 24px */
+    min-height: 24px; /* nicht kleiner als 24px */
+    aspect-ratio: 1 / 1; /* quadratisch, falls eine Seite überschrieben wird */
     border: 2px solid $color-primary; /* Blau aus deinem Design */
     border-radius: 4px;
     display: inline-block;
@@ -307,11 +318,23 @@ textarea:focus {
   justify-content: space-between; /* Text links, Button rechts */
   gap: 12px;
   flex-wrap: wrap; /* bricht um, falls kein Platz */
+  position: relative; /* für absolute Notice-Position */
+  padding-bottom: 32px; /* konstante Reserve für die Notice */
 }
 
 /* Button immer nach rechts schieben, selbst wenn Notice fehlt */
 .form__actions .btn {
   margin-left: auto;
+}
+
+/* Success/Error Notice unter dem Button anzeigen, ohne Layout-Shift */
+.form__actions .form__notice {
+  position: absolute;
+  left: 0;
+  bottom: -14px; /* unterhalb der Zeile */
+  margin: 0;
+  width: 100%;
+  padding: 0 24px; /* an Eingaben ausrichten */
 }
 
 .btn:enabled {
@@ -581,30 +604,77 @@ textarea:focus {
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
+  .contact__badge--form {
+    display: none !important;
+  }
+  .contact__badge--intro {
+    display: block !important;
+  }
+
   .contact__content {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
 
-  .contact__intro {
-    margin: 0 auto;
-    width: 90%;
-  }
+    .contact__intro {
+      margin: 0 auto;
+      /* hält die Inhalte in der "Papier"-Fläche – nicht zu breit
+         und mit weichem Scaling über die Breite */
+      width: clamp(300px, 88vw, 1024px);
 
+      .contact__display {
+        font-size: 48px;
+      }
+    }
+  }
   .contact__form {
-    width: 90%;
+    width: clamp(300px, 88vw, 1024px);
     margin: 0 auto;
   }
 }
 
 @media (max-width: 640px) {
   .contact__footer {
+    margin-top: 20px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* alles mittig */
     gap: 12px;
   }
   .contact__links {
-    gap: 16px;
+    gap: 46px;
     flex-wrap: wrap;
+    justify-content: center; /* Zeilen mittig ausrichten */
+    text-align: center;
+  }
+
+  .contact__brand {
+    margin-bottom: 18px;
+    align-items: center; /* Logo + Text mittig */
+    text-align: center;
+  }
+}
+@media (max-width: 400px) {
+  .contact__content {
+    .contact__intro {
+      margin: 0 auto;
+      /* hält die Inhalte in der "Papier"-Fläche – nicht zu breit
+         und mit weichem Scaling über die Breite */
+      max-width: 280px;
+
+      .contact__display {
+        font-size: 36px;
+      }
+    }
+  }
+  .contact__form {
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .form__group {
+    max-width: 280px;
+  }
+
+  .form__actions {
+    max-width: 280px;
   }
 }

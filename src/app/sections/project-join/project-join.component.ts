@@ -15,6 +15,8 @@ import { FooterComponent } from '../../shared/footer/footer.component';
 export class ProjectJoinComponent implements AfterViewInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
+  joinUrl = 'https://join.debreczi.com';
+
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       setTimeout(() => this.initSectionLineObserver(), 100);
@@ -36,7 +38,10 @@ export class ProjectJoinComponent implements AfterViewInit {
     );
   }
 
-  private handleIntersection(entries: IntersectionObserverEntry[], line: HTMLElement): void {
+  private handleIntersection(
+    entries: IntersectionObserverEntry[],
+    line: HTMLElement
+  ): void {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         line.classList.add('active');

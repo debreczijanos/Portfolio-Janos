@@ -11,12 +11,14 @@
             <div class="contact__scribble-container contact__scribble-container--desktop">
                 <div class="contact__scribble" id="contact-scribble-desktop"></div>
             </div>
+            <!-- Desktop: badge appears in intro (hidden on mobile) -->
+            <img class="contact__badge contact__badge--intro" src="../../../assets/images/logo/logoOrange.png" alt="personal badge" />
 
         </div>
 
         <!-- RIGHT: Form -->
         <form class="contact__form" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
-            <img class="contact__badge" src="../../../assets/images/logo/logoOrange.png" alt="personal badge" />
+            <img class="contact__badge contact__badge--form" src="../../../assets/images/logo/logoOrange.png" alt="personal badge" />
 
             <div class="form__group" [class.invalid]="isInvalid('name')">
                 <label class="form__label" for="name">{{ 'contact.LABEL_NAME' | translate }}</label>

@@ -31,7 +31,7 @@
 .back-btn:hover {
   transform: translateY(2px);
   background: $color-accent;
-  color: $color-text-light;
+  color: white !important;
   box-shadow: none;
 }
 
@@ -62,6 +62,7 @@
 
 .section {
   margin-top: 28px;
+  hyphens: auto;
 }
 
 .section-title {
@@ -96,6 +97,9 @@ a:hover,
 }
 
 @media (max-width: 720px) {
+  .legal-hero .legal-hero__inner {
+    padding: 0;
+  }
   .legal-notice {
     padding-bottom: 48px;
   }
@@ -106,7 +110,7 @@ a:hover,
     width: 220px;
   }
   .legal-hero {
-    background-size: 1100px auto;
+    // background-size: 1100px auto;
     padding: 100px 16px 64px;
   }
 }
