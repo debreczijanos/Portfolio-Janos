@@ -59,7 +59,8 @@
       .section-line {
         position: relative;
         height: 20px;
-        width: 303px;
+        width: 280px;
+        max-width: 100%;
         overflow: hidden;
 
         &::after {
@@ -277,7 +278,7 @@
     font-size: 16px;
   }
   .project-detail .project-layout .paper-pane {
-    padding: 60px 6px 6px 6px;
+    padding: 80px 6px 6px 6px;
   }
   .project-detail .project-layout .paper-pane .section .section-heading {
     font-size: 20px;

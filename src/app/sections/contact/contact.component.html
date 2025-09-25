@@ -12,17 +12,20 @@
                 <div class="contact__scribble" id="contact-scribble-desktop"></div>
             </div>
             <!-- Desktop: badge appears in intro (hidden on mobile) -->
-            <img class="contact__badge contact__badge--intro" src="../../../assets/images/logo/logoOrange.png" alt="personal badge" />
+            <img class="contact__badge contact__badge--intro" src="../../../assets/images/logo/logoOrangeFree.png"
+                alt="personal badge" />
 
         </div>
 
         <!-- RIGHT: Form -->
         <form class="contact__form" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
-            <img class="contact__badge contact__badge--form" src="../../../assets/images/logo/logoOrange.png" alt="personal badge" />
+            <img class="contact__badge contact__badge--form" src="../../../assets/images/logo/logoOrangeFree.png"
+                alt="personal badge" />
 
             <div class="form__group" [class.invalid]="isInvalid('name')">
                 <label class="form__label" for="name">{{ 'contact.LABEL_NAME' | translate }}</label>
-                <input id="name" name="name" type="text" [placeholder]="'contact.PLACEHOLDER_NAME' | translate" formControlName="name" required />
+                <input id="name" name="name" type="text" [placeholder]="'contact.PLACEHOLDER_NAME' | translate"
+                    formControlName="name" required />
                 <div class="form__error" [class.show]="isInvalid('name')">
                     <ng-container *ngIf="contactForm.get('name')?.errors as e">
                         <span *ngIf="e['required']">{{ 'contact.ERROR_NAME_REQUIRED' | translate }}</span>
@@ -33,7 +36,8 @@
 
             <div class="form__group" [class.invalid]="isInvalid('email')">
                 <label class="form__label" for="email">{{ 'contact.LABEL_EMAIL' | translate }}</label>
-                <input id="email" name="email" type="email" [placeholder]="'contact.PLACEHOLDER_EMAIL' | translate" formControlName="email" required />
+                <input id="email" name="email" type="email" [placeholder]="'contact.PLACEHOLDER_EMAIL' | translate"
+                    formControlName="email" required />
                 <div class="form__error" [class.show]="isInvalid('email')">
                     <ng-container *ngIf="contactForm.get('email')?.errors as e">
                         <span *ngIf="e['required']">{{ 'contact.ERROR_EMAIL_REQUIRED' | translate }}</span>
@@ -44,7 +48,8 @@
 
             <div class="form__group form__group--full" [class.invalid]="isInvalid('message')">
                 <label class="form__label" for="message">{{ 'contact.LABEL_MESSAGE' | translate }}</label>
-                <textarea id="message" name="message" rows="3" [placeholder]="'contact.PLACEHOLDER_MESSAGE' | translate" formControlName="message" required></textarea>
+                <textarea id="message" name="message" rows="3" [placeholder]="'contact.PLACEHOLDER_MESSAGE' | translate"
+                    formControlName="message" required></textarea>
                 <div class="form__error" [class.show]="isInvalid('message')">
                     <ng-container *ngIf="contactForm.get('message')?.errors as e">
                         <span *ngIf="e['required']">{{ 'contact.ERROR_MESSAGE_REQUIRED' | translate }}</span>
@@ -62,11 +67,13 @@
                         {{ 'contact.CONSENT_SUFFIX' | translate }}
                     </span>
                 </label>
-                <div class="form__error" [class.show]="isInvalid('consent')">{{ 'contact.ERROR_CONSENT_REQUIRED' | translate }}</div>
+                <div class="form__error" [class.show]="isInvalid('consent')">{{ 'contact.ERROR_CONSENT_REQUIRED' |
+                    translate }}</div>
             </div>
 
             <!-- Honeypot (unsichtbar für Nutzer) -->
-            <input type="text" name="company" formControlName="company" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px; opacity:0; height:0; width:0;" aria-hidden="true" />
+            <input type="text" name="company" formControlName="company" tabindex="-1" autocomplete="off"
+                style="position:absolute; left:-9999px; opacity:0; height:0; width:0;" aria-hidden="true" />
 
             <div class="form__actions">
                 <p class="form__notice success" *ngIf="sent">{{ 'contact.SEND_SUCCESS' | translate }}</p>
@@ -75,7 +82,8 @@
                 <div class="contact__scribble-container contact__scribble-container--mobile">
                     <div class="contact__scribble" id="contact-scribble-mobile"></div>
                 </div>
-                <button class="btn btn--pill" type="submit" [disabled]="contactForm.invalid || sending">{{ sending ? ('contact.SENDING' | translate) : ('contact.SEND' | translate) }}</button>
+                <button class="btn btn--pill" type="submit" [disabled]="contactForm.invalid || sending">{{ sending ?
+                    ('contact.SENDING' | translate) : ('contact.SEND' | translate) }}</button>
             </div>
         </form>
     </div>
@@ -103,7 +111,8 @@
                 <div class="social-icon-hover">
                     <img src="../../../assets/images/icons/Linkedin.png" alt="LinkedIn" />
                 </div>
-                <a href="https://linkedin.com/in/debreczi-janos-21847a1a4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://linkedin.com/in/debreczi-janos-21847a1a4" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
             </li>
             <li class="social-link-wrapper">
                 <div class="social-icon-hover">
