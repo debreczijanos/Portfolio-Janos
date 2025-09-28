@@ -22,14 +22,13 @@ body.contact-overlay-open {
   overflow: hidden;
 }
 
-/* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent !important; // wichtig: transparent erzwingen
+  background: transparent !important;
 }
 
 ::-webkit-scrollbar-thumb {

@@ -1,6 +1,18 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, AfterViewInit, Inject, PLATFORM_ID, OnDestroy, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import {
+  Component,
+  AfterViewInit,
+  Inject,
+  PLATFORM_ID,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from '../../shared/footer/footer.component';
@@ -9,7 +21,13 @@ import { ContactService } from '../../core/services/contact.service';
 @Component({
   standalone: true,
   selector: 'app-contact',
-  imports: [CommonModule, TranslateModule, RouterModule, ReactiveFormsModule, FooterComponent],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FooterComponent,
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
@@ -32,24 +50,18 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     this.contactForm = this.fb.group({
       name: [
         '',
-        [
-          Validators.required,
-          // Nur Buchstaben (inkl. Umlaute/diakritische), optional Leerzeichen zwischen Wörtern
-          Validators.pattern(/^[\p{L}]+(?:\s[\p{L}]+)*$/u),
-        ],
+        [Validators.required, Validators.pattern(/^[\p{L}]+(?:\s[\p{L}]+)*$/u)],
       ],
       email: [
         '',
         [
           Validators.required,
           Validators.email,
-          // Require at least one dot in the domain so obviously invalid addresses get blocked client-side
           Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/),
         ],
       ],
       message: ['', [Validators.required, Validators.minLength(14)]],
       consent: [false, [Validators.requiredTrue]],
-      // Honeypot gegen Bots – muss leer bleiben
       company: [''],
     });
   }
@@ -61,10 +73,10 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initSectionLineObserver(): void {
-    const scribbles = document.querySelectorAll<HTMLElement>('.contact__scribble');
+    const scribbles =
+      document.querySelectorAll<HTMLElement>('.contact__scribble');
     if (!scribbles.length) return;
 
-    // One observer for all scribbles; toggles 'active' per target
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -82,8 +94,6 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     scribbles.forEach((el) => this.observer!.observe(el));
   }
 
-  // Legacy helper functions kept during refactor; not used anymore
-
   ngOnDestroy(): void {
     this.observer?.disconnect();
     if (this.overlayTimeoutId) {
@@ -97,7 +107,6 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     this.submitted = true;
     this.sent = false;
     this.sendError = false;
-    // Blockieren, wenn Honeypot gefüllt ist (Bot) oder Formular ungültig
     if (this.contactForm.get('company')?.value) return;
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
@@ -109,20 +118,24 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
     const message = this.contactForm.get('message')?.value ?? '';
 
     this.sending = true;
-    this.contactService
-      .send({ name, email, message })
-      .subscribe({
-        next: () => {
-          this.sending = false;
-          this.showSuccessOverlay();
-          this.contactForm.reset({ name: '', email: '', message: '', consent: false, company: '' });
-          this.submitted = false; // keine Fehlermeldungen nach erfolgreichem Versand anzeigen
-        },
-        error: () => {
-          this.sending = false;
-          this.sendError = true;
-        },
-      });
+    this.contactService.send({ name, email, message }).subscribe({
+      next: () => {
+        this.sending = false;
+        this.showSuccessOverlay();
+        this.contactForm.reset({
+          name: '',
+          email: '',
+          message: '',
+          consent: false,
+          company: '',
+        });
+        this.submitted = false;
+      },
+      error: () => {
+        this.sending = false;
+        this.sendError = true;
+      },
+    });
   }
 
   sent = false;
@@ -162,7 +175,8 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private unlockBodyScroll(): void {
-    if (!isPlatformBrowser(this.platformId) || !this.overlayScrollLocked) return;
+    if (!isPlatformBrowser(this.platformId) || !this.overlayScrollLocked)
+      return;
     document.body.classList.remove('contact-overlay-open');
     this.overlayScrollLocked = false;
   }

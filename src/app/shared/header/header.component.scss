@@ -1,7 +1,7 @@
 @import "../../../styles/variables";
 
 header {
-  position: absolute; /* sits over hero initially, scrolls away */
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -14,9 +14,8 @@ header {
   align-content: center;
 }
 
-/* Solid header variant for non-home routes */
 .header--solid {
-  position: relative; /* on subpages, take up layout space */
+  position: relative;
   background: $color-header-bg;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 
@@ -29,12 +28,12 @@ header {
   }
 }
 
-/* Project detail pages: first two items over light paper need dark text */
 .header--project {
   .nav-content ul li:nth-child(-n + 2) {
-    color: $color-text; /* dark text */
+    color: $color-text;
   }
 }
+
 .language-toggle {
   display: flex;
   align-items: center;
@@ -161,7 +160,6 @@ nav {
   background-color: transparent;
 }
 
-/* Mobile burger (hidden by default) */
 .burger {
   display: none;
   background: transparent;
@@ -170,6 +168,7 @@ nav {
   cursor: pointer;
   color: $color-text-light;
 }
+
 .burger span {
   display: block;
   width: 24px;
@@ -215,7 +214,6 @@ nav {
         transition: clip-path 0.3s linear, opacity 0.3s;
       }
 
-      // 1. Element: About me (von oben nach unten)
       &:first-child::before {
         background-image: url("/assets/images/hoverImg/aboutMeHover.png");
         clip-path: inset(0 0 100% 0);
@@ -225,7 +223,6 @@ nav {
         clip-path: inset(0 0 0 0);
       }
 
-      // 2. Element: Skills (von links nach rechts)
       &:nth-child(2)::before {
         background-image: url("/assets/images/hoverImg/skillsHover.png");
         clip-path: inset(0 100% 0 0);
@@ -235,7 +232,6 @@ nav {
         clip-path: inset(0 0 0 0);
       }
 
-      // 3. Element: Projects (von links nach rechts)
       &:nth-child(3)::before {
         background-image: url("/assets/images/hoverImg/projectsHover.png");
         clip-path: inset(0 100% 0 0);
@@ -245,7 +241,6 @@ nav {
         clip-path: inset(0 0 0 0);
       }
 
-      // 4. Element: Contact (von links nach rechts)
       &:nth-child(4)::before {
         background-image: url("/assets/images/hoverImg/contactHover.png");
         clip-path: inset(0 100% 0 0);
@@ -258,7 +253,6 @@ nav {
   }
 }
 
-/* Ensure anchor tags inherit styling and remove default underline */
 .nav-content a {
   color: inherit;
   text-decoration: none;
@@ -284,7 +278,6 @@ nav {
   }
 }
 
-/* Hide desktop nav on small screens, show burger */
 @media (max-width: 900px) {
   .burger {
     display: inline-block;
@@ -297,7 +290,6 @@ nav {
   }
 }
 
-/* Mobile overlay menu */
 .mobile-menu {
   position: fixed;
   inset: 0;
@@ -308,10 +300,12 @@ nav {
   transition: opacity 0.25s ease;
   z-index: 200;
 }
+
 .mobile-menu.open {
   opacity: 1;
   pointer-events: auto;
 }
+
 .mobile-menu__inner {
   position: absolute;
   inset: 0;
@@ -321,11 +315,13 @@ nav {
   flex-direction: column;
   height: 70%;
 }
+
 .mobile-menu__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
 .mobile-menu__top .close {
   background: transparent;
   border: 0;
@@ -334,6 +330,7 @@ nav {
   color: $color-text-light;
   padding: 8px;
 }
+
 .mobile-logo {
   width: 40px;
   height: 40px;
@@ -348,9 +345,11 @@ nav {
   padding: 24px 0 8px;
   margin: 0;
 }
+
 .mobile-nav li {
   text-align: left;
 }
+
 .mobile-nav a {
   display: block;
   padding: 14px 0;
@@ -371,8 +370,9 @@ nav {
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 1; /* ensure hover frame is above background layers */
+  z-index: 1;
 }
+
 .mobile-lang .lang {
   cursor: pointer;
   position: relative;
@@ -414,14 +414,12 @@ nav {
   color: $color-accent;
 }
 
-/* mirror desktop .show-img-frame behavior on mobile */
 .mobile-lang .show-img-frame::before {
   opacity: 1;
   animation: circle-reveal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   transform: rotate(-180deg);
 }
 
-/* mimic desktop switch in mobile overlay */
 .mobile-lang .switch {
   position: relative;
   display: inline-block;
@@ -491,7 +489,6 @@ nav {
   img {
     width: 32px;
     height: 32px;
-    /* force icon to pure white regardless of source color */
     filter: brightness(0) invert(1);
   }
 }
@@ -501,9 +498,11 @@ nav {
     display: none;
   }
 }
+
 .mobile-nav a {
   position: relative;
 }
+
 .mobile-nav a::before {
   content: "";
   position: absolute;
@@ -520,11 +519,11 @@ nav {
   transition: clip-path 0.3s linear, opacity 0.3s;
 }
 
-/* 1. About me (von oben nach unten) */
 .mobile-nav li:nth-child(1) a::before {
   background-image: url("/assets/images/hoverImg/aboutMeHover.png");
   clip-path: inset(0 0 100% 0);
 }
+
 .mobile-nav li:nth-child(1) a:hover::before,
 .mobile-nav li:nth-child(1) a:active::before,
 .mobile-nav li:nth-child(1) a:focus-visible::before,
@@ -532,7 +531,6 @@ nav {
   clip-path: inset(0 0 0 0);
 }
 
-/* 2. Skills (von links nach rechts) */
 .mobile-nav li:nth-child(2) a::before {
   background-image: url("/assets/images/hoverImg/skillsHover.png");
   clip-path: inset(0 100% 0 0);
@@ -544,7 +542,6 @@ nav {
   clip-path: inset(0 0 0 0);
 }
 
-/* 3. Projects (von links nach rechts) */
 .mobile-nav li:nth-child(3) a::before {
   background-image: url("/assets/images/hoverImg/projectsHover.png");
   clip-path: inset(0 100% 0 0);
@@ -556,7 +553,6 @@ nav {
   clip-path: inset(0 0 0 0);
 }
 
-/* 4. Contact (von links nach rechts) */
 .mobile-nav li:nth-child(4) a::before {
   background-image: url("/assets/images/hoverImg/contactHover.png");
   clip-path: inset(0 100% 0 0);

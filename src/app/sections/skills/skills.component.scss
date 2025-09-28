@@ -3,8 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  // max-width: 1440px;
-  // height: 100vh;
   margin: 0 auto;
   padding: 144px 16px;
   background-image: url("/assets/images/ace2.png");
@@ -67,39 +65,31 @@
         background: url("../../../assets/images/skills/circle.svg") no-repeat
           left center;
         background-size: contain;
-        // transform: scaleX(0);
-        // transform-origin: center;
-        // transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-        // z-index: 2;
         mask-image: radial-gradient(circle at center, black 0%, black 0%);
         mask-size: 0% 0%;
         mask-repeat: no-repeat;
         transition: mask-size 0.8s ease-out;
-        // z-index: 2;
       }
 
       &.active::after {
-        // transform: scaleX(1);
         mask-size: 120% 120%;
       }
     }
   }
+
   .skills-description {
     background-image: url("/assets/images/skills/skillsPappel.png");
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
-
-    padding: 36px 6px; // mehr Platz, damit Text nicht an Kanten klebt
+    padding: 36px 6px;
     text-align: center;
     font-size: $font-size-md;
     font-weight: 400;
     font-family: "Bricolage Grotesque", sans-serif;
     line-height: 140%;
     color: $color-text;
-
-    max-width: 656px; // begrenzt Breite auf Hintergrundgröße
-    // margin: 0 auto; // zentriert im Container
+    max-width: 656px;
   }
 }
 
@@ -153,6 +143,7 @@
       }
     }
   }
+
   .skills-sticker-wrapper {
     perspective: 1000px;
     width: 200px;
@@ -181,18 +172,20 @@
   .skills-sticker-inner:hover .skills-sticker-front {
     clip-path: polygon(0 100%, 0 100%, 0 100%, 0 100%);
   }
+
   .sticker-front {
     height: 200px;
     width: 200px;
     display: block;
   }
+
   .sticker-arrow {
     position: absolute;
     top: 40px;
     left: 70px;
-    // width: 36px;
     height: auto;
   }
+
   .sticker-text {
     position: absolute;
     bottom: 16px;
@@ -203,6 +196,7 @@
     width: 100%;
     text-align: center;
   }
+
   .tech,
   .sticker-back-content {
     font-size: 20px;
@@ -212,6 +206,7 @@
     width: 100%;
     text-align: center;
   }
+
   .sticker-back {
     position: absolute;
     top: 0;
@@ -236,6 +231,7 @@
     text-align: center;
     z-index: 2;
   }
+
   .sticker-icons {
     display: flex;
     flex-direction: row;

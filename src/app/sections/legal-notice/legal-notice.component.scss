@@ -84,8 +84,6 @@
   font-size: $font-size-base;
 }
 
-// Links im Template und in [innerHTML] (ngx-translate) stylen
-// [innerHTML]-Content bekommt keine _ngcontent-Attribute, deshalb zusätzlich ::ng-deep
 a,
 :host ::ng-deep .legal-notice a {
   color: $color-primary;
@@ -112,7 +110,6 @@ a:hover,
     width: 220px;
   }
   .legal-hero {
-    // background-size: 1100px auto;
     padding: 100px 16px 64px;
   }
 }

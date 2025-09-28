@@ -28,12 +28,8 @@ export class HeaderComponent {
 
     this.translate.setDefaultLang('de');
     this.translate.use(this.currentLang);
-
-    // Set initial header style based on current URL
     this.solidHeader = !this.isTransparentRoute(this.router.url);
     this.isProjectRoute = this.router.url.startsWith('/projects/');
-
-    // Update on navigation
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => {
@@ -54,7 +50,6 @@ export class HeaderComponent {
   }
 
   private isTransparentRoute(url: string): boolean {
-    // Keep header transparent on home, legal notice, and project detail pages
     return (
       url === '/' ||
       url.startsWith('/legal-notice') ||
@@ -106,7 +101,6 @@ export class HeaderComponent {
     if (anchor) {
       anchor.classList.add('pressed');
     }
-    // allow the pressed animation to show before navigating/closing
     setTimeout(() => {
       this.goTo(sectionId);
       this.closeMenu();
@@ -116,7 +110,6 @@ export class HeaderComponent {
 
   onMobileLangTap(lang: 'en' | 'de', event?: Event) {
     if (event) event.preventDefault();
-    // Briefly show the hover frame on mobile before switching
     this.hoveredLang = lang;
     setTimeout(() => {
       this.setLanguage(lang);
@@ -138,8 +131,6 @@ export class HeaderComponent {
     if (typeof window === 'undefined') return;
     try {
       window.localStorage.setItem(this.storageKey, lang);
-    } catch {
-      // ignore storage errors (e.g., Safari private mode)
-    }
+    } catch {}
   }
 }

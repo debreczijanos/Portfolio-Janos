@@ -1,6 +1,5 @@
 <section class="contact" id="contact" aria-labelledby="contact-overline">
     <div class="contact__content">
-        <!-- LEFT: Intro copy -->
         <div class="contact__intro">
             <span id="contact-overline" class="contact__overline">{{ 'contact.OVERLINE' | translate }}</span>
 
@@ -11,13 +10,11 @@
             <div class="contact__scribble-container contact__scribble-container--desktop">
                 <div class="contact__scribble" id="contact-scribble-desktop"></div>
             </div>
-            <!-- Desktop: badge appears in intro (hidden on mobile) -->
             <img class="contact__badge contact__badge--intro" src="../../../assets/images/logo/logoOrangeFree.png"
                 alt="personal badge" />
 
         </div>
 
-        <!-- RIGHT: Form -->
         <form class="contact__form" [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
             <img class="contact__badge contact__badge--form" src="../../../assets/images/logo/logoOrangeFree.png"
                 alt="personal badge" />
@@ -71,13 +68,11 @@
                     translate }}</div>
             </div>
 
-            <!-- Honeypot (unsichtbar für Nutzer) -->
             <input type="text" name="company" formControlName="company" tabindex="-1" autocomplete="off"
                 style="position:absolute; left:-9999px; opacity:0; height:0; width:0;" aria-hidden="true" />
 
             <div class="form__actions">
                 <p class="form__notice error" *ngIf="sendError">{{ 'contact.SEND_ERROR' | translate }}</p>
-                <!-- Desktop scribble aligned with the button -->
                 <div class="contact__scribble-container contact__scribble-container--mobile">
                     <div class="contact__scribble" id="contact-scribble-mobile"></div>
                 </div>
@@ -93,7 +88,8 @@
         <div class="contact__overlay-panel" (click)="$event.stopPropagation()">
             <button type="button" class="contact__overlay-close" (click)="closeOverlay()"
                 [attr.aria-label]="'contact.OVERLAY_CLOSE' | translate">&times;</button>
-            <p id="contact-success-message" class="contact__overlay-message" role="status" aria-live="assertive">{{ 'contact.SEND_SUCCESS' | translate }}</p>
+            <p id="contact-success-message" class="contact__overlay-message" role="status" aria-live="assertive">{{
+                'contact.SEND_SUCCESS' | translate }}</p>
         </div>
     </div>
 

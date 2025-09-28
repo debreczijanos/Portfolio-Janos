@@ -87,23 +87,25 @@
         margin: 16px 0 24px;
 
         .section-heading {
-          // font-size: 20px;
           font-weight: 700;
           font-size: 24px;
           margin: 0 0 8px;
         }
+
         .section-copy {
           max-width: 60ch;
           line-height: 1.6;
           opacity: 0.9;
         }
       }
+
       .meta {
         margin-top: 16px;
 
         .duration {
           margin: 0 0 12px;
         }
+
         .stack {
           list-style: none;
           display: flex;
@@ -138,13 +140,13 @@
       position: relative;
       max-width: 760px;
       width: 100%;
-      // overflow: hidden; /* prevent badge or shadows from causing horizontal scroll */
 
       img {
         width: 100%;
         height: auto;
         border-radius: 16px;
       }
+
       .badge {
         position: absolute;
         right: -20px;
@@ -199,7 +201,6 @@
       align-items: center;
       gap: 10px;
       color: $color-text-light;
-
       font-weight: 700;
       text-decoration: none;
       width: 100%;
@@ -219,11 +220,11 @@
   }
 }
 
-/* Use selectors with equal-or-greater specificity than the base rules */
 @media (max-width: 1126px) {
   .project-detail .project-layout .paper-pane {
     padding: 60px 40px 50px 40px;
   }
+
   .project-detail .dark-pane .preview {
     width: 100%;
     max-width: 100%;
@@ -237,7 +238,6 @@
   }
   .project-detail .project-layout {
     grid-template-columns: 1fr;
-    // padding: 20px 20px;
 
     .paper-pane,
     .dark-pane {

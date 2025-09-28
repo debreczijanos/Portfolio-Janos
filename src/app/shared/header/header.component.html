@@ -31,7 +31,6 @@
     </div>
   </nav>
 
-  <!-- Mobile overlay menu -->
   <div class="mobile-menu" [class.open]="menuOpen" (click)="closeMenu()">
     <div class="mobile-menu__inner" (click)="$event.stopPropagation()">
       <div class="mobile-menu__top">
@@ -47,34 +46,25 @@
       </ul>
 
       <div class="mobile-lang">
-        <span class="lang"
-              [class.active]="currentLang === 'en'"
-              [class.show-img-frame]="hoveredLang === 'en' && currentLang !== 'en'"
-              (mouseenter)="hoveredLang = 'en'"
-              (mouseleave)="hoveredLang = null"
-              (pointerdown)="hoveredLang = 'en'"
-              (pointerup)="hoveredLang = null"
-              (touchstart)="hoveredLang = 'en'"
-              (touchend)="hoveredLang = null"
-              (click)="onMobileLangTap('en', $event)">EN</span>
+        <span class="lang" [class.active]="currentLang === 'en'"
+          [class.show-img-frame]="hoveredLang === 'en' && currentLang !== 'en'" (mouseenter)="hoveredLang = 'en'"
+          (mouseleave)="hoveredLang = null" (pointerdown)="hoveredLang = 'en'" (pointerup)="hoveredLang = null"
+          (touchstart)="hoveredLang = 'en'" (touchend)="hoveredLang = null"
+          (click)="onMobileLangTap('en', $event)">EN</span>
         <label class="switch">
           <input type="checkbox" (change)="toggleLanguage()" [checked]="currentLang === 'de'" />
           <span class="slider round"></span>
         </label>
-        <span class="lang"
-              [class.active]="currentLang === 'de'"
-              [class.show-img-frame]="hoveredLang === 'de' && currentLang !== 'de'"
-              (mouseenter)="hoveredLang = 'de'"
-              (mouseleave)="hoveredLang = null"
-              (pointerdown)="hoveredLang = 'de'"
-              (pointerup)="hoveredLang = null"
-              (touchstart)="hoveredLang = 'de'"
-              (touchend)="hoveredLang = null"
-              (click)="onMobileLangTap('de', $event)">DE</span>
+        <span class="lang" [class.active]="currentLang === 'de'"
+          [class.show-img-frame]="hoveredLang === 'de' && currentLang !== 'de'" (mouseenter)="hoveredLang = 'de'"
+          (mouseleave)="hoveredLang = null" (pointerdown)="hoveredLang = 'de'" (pointerup)="hoveredLang = null"
+          (touchstart)="hoveredLang = 'de'" (touchend)="hoveredLang = null"
+          (click)="onMobileLangTap('de', $event)">DE</span>
       </div>
 
       <div class="mobile-social">
-        <a href="https://linkedin.com/in/debreczi-janos-21847a1a4" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <a href="https://linkedin.com/in/debreczi-janos-21847a1a4" target="_blank" rel="noopener noreferrer"
+          aria-label="LinkedIn">
           <img src="assets/images/icons/Linkedin.png" alt="LinkedIn" />
         </a>
         <a href="https://github.com/debreczijanos" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

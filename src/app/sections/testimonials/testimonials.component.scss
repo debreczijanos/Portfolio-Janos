@@ -3,8 +3,8 @@ a {
   text-decoration: none;
   color: #000;
 }
+
 section {
-  // padding: 4rem 2rem;
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
@@ -40,7 +40,6 @@ section {
 .cards {
   display: flex;
   position: relative;
-  //   flex-direction: column;
   justify-content: center;
   top: 60px;
 
@@ -126,9 +125,8 @@ section {
     background-size: cover;
     background-position: center;
     position: absolute;
-    overflow: hidden; // wichtig, falls dein Overlay größer ist
+    overflow: hidden;
 
-    // Overlay-Bild (unsichtbar standardmäßig)
     &::after {
       content: "";
       position: absolute;
@@ -140,7 +138,7 @@ section {
         center/cover no-repeat;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
-      z-index: 1; // Sicherstellen, dass es über dem Hintergrundbild liegt
+      z-index: 1;
     }
 
     &:hover::after {
@@ -167,9 +165,8 @@ section {
     background-size: cover;
     background-position: center;
     position: absolute;
-    overflow: hidden; // wichtig, falls dein Overlay größer ist
+    overflow: hidden;
 
-    // Overlay-Bild (unsichtbar standardmäßig)
     &::after {
       content: "";
       position: absolute;
@@ -181,7 +178,7 @@ section {
         center/cover no-repeat;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
-      z-index: 1; // Sicherstellen, dass es über dem Hintergrundbild liegt
+      z-index: 1;
     }
 
     &:hover::after {
@@ -209,9 +206,8 @@ section {
     background-size: cover;
     background-position: center;
     position: absolute;
-    overflow: hidden; // wichtig, falls dein Overlay größer ist
+    overflow: hidden;
 
-    // Overlay-Bild (unsichtbar standardmäßig)
     &::after {
       content: "";
       position: absolute;
@@ -223,7 +219,7 @@ section {
         center/cover no-repeat;
       opacity: 0;
       transition: opacity 0.3s ease-in-out;
-      z-index: 1; // Sicherstellen, dass es über dem Hintergrundbild liegt
+      z-index: 1;
     }
 
     &:hover::after {
@@ -354,6 +350,7 @@ section {
     span {
       font-size: $font-size-md;
     }
+
     h2 {
       font-size: 36px;
       display: flex;
@@ -362,6 +359,7 @@ section {
       width: 100%;
     }
   }
+
   .card {
     &--left,
     &--center,
