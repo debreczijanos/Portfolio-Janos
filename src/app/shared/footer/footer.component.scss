@@ -1,5 +1,21 @@
 @import "../../../styles/variables";
 
+:host {
+  display: block;
+  width: 100%;
+  --footer-social-filter: brightness(0) saturate(100%);
+}
+
+:host(.footer--dark) {
+  --footer-social-filter: brightness(0) invert(1);
+
+  .contact__brand,
+  .contact__links a,
+  .contact__links a:hover {
+    color: $color-text-light;
+  }
+}
+
 /* FOOTER */
 
 .contact__footer {
@@ -11,7 +27,6 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
   margin: 40px auto 0;
 }
 .contact__brand {
@@ -27,8 +42,13 @@
   text-decoration: none;
 }
 .brand__logo {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
+  // filter: var(--footer-brand-filter);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 .contact__links {
   list-style: none;
@@ -49,9 +69,8 @@
 }
 .contact__links a:hover {
   text-underline-offset: 2px;
+  color: $color-text-btn;
 }
-
-// }
 
 // Legal Icon mit Unterstrich-Animation (wie Social Icons, aber andere Animation)
 .legal-link-wrapper {
@@ -204,8 +223,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Make white icons appear black on light background */
-    filter: brightness(0) saturate(100%);
+    filter: var(--footer-social-filter);
   }
 }
 

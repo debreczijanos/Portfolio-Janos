@@ -3,6 +3,8 @@ import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { filter } from 'rxjs/operators';
 
+type SectionId = 'hero' | 'about' | 'skills' | 'projects' | 'contact';
+
 @Component({
   standalone: true,
   selector: 'app-header',
@@ -60,13 +62,25 @@ export class HeaderComponent {
     );
   }
 
-  goTo(sectionId: 'about' | 'skills' | 'projects' | 'contact', event?: Event) {
+  goTo(sectionId: SectionId, event?: Event) {
     if (event) event.preventDefault();
     const scroll = () => {
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (typeof window === 'undefined') return;
+
+      if (sectionId === 'hero') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
       }
+
+      const el = document.getElementById(sectionId);
+      if (!el) return;
+
+      const header = document.querySelector('header');
+      const headerOffset = header?.getBoundingClientRect().height ?? 0;
+      const targetTop =
+        el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+      window.scrollTo({ top: Math.max(targetTop, 0), behavior: 'smooth' });
     };
 
     if (this.router.url === '/') {
@@ -86,7 +100,7 @@ export class HeaderComponent {
     document.body.style.overflow = '';
   }
 
-  onMobileNav(event: Event, sectionId: 'about' | 'skills' | 'projects' | 'contact') {
+  onMobileNav(event: Event, sectionId: SectionId) {
     event.preventDefault();
     const anchor = event.currentTarget as HTMLElement | null;
     if (anchor) {

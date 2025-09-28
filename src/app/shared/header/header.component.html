@@ -1,8 +1,8 @@
 <header [class.header--solid]="solidHeader" [class.header--project]="isProjectRoute">
   <nav>
-    <div class="logo">
+    <a class="logo" href="/" aria-label="Navigate to hero section" (click)="goTo('hero', $event)">
       <img src="assets/images/logo/logoBlue.png" alt="logo" />
-    </div>
+    </a>
 
     <button class="burger" type="button" aria-label="Menu" (click)="toggleMenu()">
       <span></span><span></span><span></span>

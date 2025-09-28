@@ -3,12 +3,13 @@ import { Component, AfterViewInit, Inject, PLATFORM_ID, OnDestroy, OnInit } from
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from '../../shared/footer/footer.component';
 import { ContactService } from '../../core/services/contact.service';
 
 @Component({
   standalone: true,
   selector: 'app-contact',
-  imports: [CommonModule, TranslateModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, TranslateModule, RouterModule, ReactiveFormsModule, FooterComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })

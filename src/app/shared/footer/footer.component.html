@@ -1,6 +1,16 @@
 <div class="contact__footer">
     <div class="contact__brand">
-        <img class="brand__logo" src="assets/images/logo/logoBlueIcon.png" alt="personal logo" />
+        <img
+            class="brand__logo"
+            src="assets/images/logo/logoBlueIcon.png"
+            alt="personal logo"
+            role="button"
+            tabindex="0"
+            aria-label="Scroll to top"
+            (click)="scrollToTop()"
+            (keydown.enter)="scrollToTop()"
+            (keydown.space)="scrollToTop()"
+        />
         <!-- <span class="brand__logo">DJ</span> -->
         <span class="brand__copy">© János Debreczi 2025</span>
     </div>
