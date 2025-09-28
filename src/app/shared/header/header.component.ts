@@ -58,31 +58,35 @@ export class HeaderComponent {
   }
 
   goTo(sectionId: SectionId, event?: Event) {
-    if (event) event.preventDefault();
-    const scroll = () => {
-      if (typeof window === 'undefined') return;
-
-      if (sectionId === 'hero') {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        return;
-      }
-
-      const el = document.getElementById(sectionId);
-      if (!el) return;
-
-      const header = document.querySelector('header');
-      const headerOffset = header?.getBoundingClientRect().height ?? 0;
-      const targetTop =
-        el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-
-      window.scrollTo({ top: Math.max(targetTop, 0), behavior: 'smooth' });
-    };
+    event?.preventDefault();
+    const performScroll = () => this.scrollAfterNavigation(sectionId);
 
     if (this.router.url === '/') {
-      scroll();
-    } else {
-      this.router.navigateByUrl('/').then(() => setTimeout(scroll));
+      performScroll();
+      return;
     }
+
+    this.router.navigateByUrl('/').then(() => setTimeout(performScroll));
+  }
+
+  private scrollAfterNavigation(sectionId: SectionId): void {
+    if (typeof window === 'undefined') return;
+    if (sectionId === 'hero') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const el = document.getElementById(sectionId);
+    if (!el) return;
+    const targetTop =
+      el.getBoundingClientRect().top +
+      window.pageYOffset -
+      this.getHeaderOffset();
+    window.scrollTo({ top: Math.max(targetTop, 0), behavior: 'smooth' });
+  }
+
+  private getHeaderOffset(): number {
+    const header = document.querySelector('header');
+    return header?.getBoundingClientRect().height ?? 0;
   }
 
   toggleMenu() {

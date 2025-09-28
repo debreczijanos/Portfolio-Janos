@@ -37,6 +37,19 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   submitted = false;
   private overlayTimeoutId: ReturnType<typeof setTimeout> | null = null;
   private overlayScrollLocked = false;
+  private readonly nameValidators = [
+    Validators.required,
+    Validators.pattern(/^[\p{L}]+(?:\s[\p{L}]+)*$/u),
+  ];
+  private readonly emailValidators = [
+    Validators.required,
+    Validators.email,
+    Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/),
+  ];
+  private readonly messageValidators = [
+    Validators.required,
+    Validators.minLength(14),
+  ];
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -47,22 +60,16 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   contactForm!: FormGroup;
 
   ngOnInit(): void {
-    this.contactForm = this.fb.group({
-      name: [
-        '',
-        [Validators.required, Validators.pattern(/^[\p{L}]+(?:\s[\p{L}]+)*$/u)],
-      ],
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.email,
-          Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/),
-        ],
-      ],
-      message: ['', [Validators.required, Validators.minLength(14)]],
-      consent: [false, [Validators.requiredTrue]],
-      company: [''],
+    this.contactForm = this.buildForm();
+  }
+
+  private buildForm(): FormGroup {
+    return this.fb.group({
+      name: this.fb.control('', this.nameValidators),
+      email: this.fb.control('', this.emailValidators),
+      message: this.fb.control('', this.messageValidators),
+      consent: this.fb.control(false, [Validators.requiredTrue]),
+      company: this.fb.control(''),
     });
   }
 
@@ -73,25 +80,27 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private initSectionLineObserver(): void {
-    const scribbles =
-      document.querySelectorAll<HTMLElement>('.contact__scribble');
+    const scribbles = this.queryScribbles();
     if (!scribbles.length) return;
 
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const el = entry.target as HTMLElement;
-          if (entry.isIntersecting) {
-            el.classList.add('active');
-          } else {
-            el.classList.remove('active');
-          }
-        });
-      },
+    this.observer = this.createScribbleObserver();
+    scribbles.forEach((el) => this.observer!.observe(el));
+  }
+
+  private queryScribbles(): NodeListOf<HTMLElement> {
+    return document.querySelectorAll<HTMLElement>('.contact__scribble');
+  }
+
+  private createScribbleObserver(): IntersectionObserver {
+    return new IntersectionObserver(
+      (entries) => entries.forEach((entry) => this.toggleScribble(entry)),
       { threshold: 0.1, rootMargin: '-50px 0px -50px 0px' }
     );
+  }
 
-    scribbles.forEach((el) => this.observer!.observe(el));
+  private toggleScribble(entry: IntersectionObserverEntry): void {
+    const el = entry.target as HTMLElement;
+    el.classList.toggle('active', entry.isIntersecting);
   }
 
   ngOnDestroy(): void {
@@ -104,38 +113,10 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onSubmit(): void {
-    this.submitted = true;
-    this.sent = false;
-    this.sendError = false;
-    if (this.contactForm.get('company')?.value) return;
-    if (this.contactForm.invalid) {
-      this.contactForm.markAllAsTouched();
-      return;
-    }
+    this.markSubmissionStart();
+    if (this.blockSubmission()) return;
 
-    const name = this.contactForm.get('name')?.value ?? '';
-    const email = this.contactForm.get('email')?.value ?? '';
-    const message = this.contactForm.get('message')?.value ?? '';
-
-    this.sending = true;
-    this.contactService.send({ name, email, message }).subscribe({
-      next: () => {
-        this.sending = false;
-        this.showSuccessOverlay();
-        this.contactForm.reset({
-          name: '',
-          email: '',
-          message: '',
-          consent: false,
-          company: '',
-        });
-        this.submitted = false;
-      },
-      error: () => {
-        this.sending = false;
-        this.sendError = true;
-      },
-    });
+    this.sendForm();
   }
 
   sent = false;
@@ -179,5 +160,57 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
       return;
     document.body.classList.remove('contact-overlay-open');
     this.overlayScrollLocked = false;
+  }
+
+  private markSubmissionStart(): void {
+    this.submitted = true;
+    this.sent = false;
+    this.sendError = false;
+  }
+
+  private blockSubmission(): boolean {
+    if (this.contactForm.get('company')?.value) return true;
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+      return true;
+    }
+    return false;
+  }
+
+  private sendForm(): void {
+    const payload = this.extractPayload();
+    this.sending = true;
+    this.contactService.send(payload).subscribe({
+      next: () => this.handleSuccess(),
+      error: () => this.handleError(),
+    });
+  }
+
+  private extractPayload(): { name: string; email: string; message: string } {
+    const { name = '', email = '', message = '' } =
+      this.contactForm.getRawValue();
+    return { name, email, message };
+  }
+
+  private handleSuccess(): void {
+    this.sending = false;
+    this.showSuccessOverlay();
+    this.resetForm();
+    this.submitted = false;
+  }
+
+  private handleError(): void {
+    this.sending = false;
+    this.sendError = true;
+  }
+
+  private resetForm(): void {
+    this.contactForm.reset({
+      name: '',
+      email: '',
+      message: '',
+      consent: false,
+      company: '',
+    });
   }
 }
