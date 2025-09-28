@@ -62,6 +62,7 @@
     "ERROR_CONSENT_REQUIRED": "Please accept the privacy policy to continue",
     "SENDING": "Sending…",
     "SEND_SUCCESS": "Thanks! Your message has been sent.",
+    "OVERLAY_CLOSE": "Dismiss notification",
     "SEND_ERROR": "Sorry, something went wrong. Please try again later."
   },
   "legal": {

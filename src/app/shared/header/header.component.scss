@@ -4,7 +4,10 @@ header {
   position: absolute; /* sits over hero initially, scrolls away */
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   z-index: 100;
   background: transparent;
   height: $header-height;

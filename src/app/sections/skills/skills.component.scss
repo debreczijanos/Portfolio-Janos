@@ -140,6 +140,10 @@
         transform: scale(0.7);
       }
 
+      &:last-child:hover img {
+        filter: grayscale(0%) sepia(1) hue-rotate(190deg) saturate(6);
+      }
+
       span {
         font-size: $font-size-md;
         font-weight: 400;
@@ -288,7 +292,7 @@
     .skills-description {
       font-size: $font-size-md;
       max-width: 100%;
-      padding: 24px 12px;
+      padding: 60px 12px;
     }
   }
 

@@ -18,7 +18,7 @@ section::before {
   position: absolute;
   inset: 0;
   background: url("../../../assets/images/ace3.png") center/cover no-repeat;
-  transform: rotate(180deg);
+  // transform: rotate(180deg);
   z-index: -1;
   background-size: 120% 100%;
 }
@@ -79,7 +79,7 @@ section::before {
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 10px;
   align-content: start;
 }
 
@@ -181,9 +181,9 @@ section::before {
 }
 
 .form__error {
-  min-height: 36px; // reserviert Platz, damit die Form nicht springt
+  min-height: 48px; // reserviert Platz, damit die Form nicht springt
   color: $color-accent;
-  font-size: $font-size-sm;
+  font-size: $font-size-base;
   padding: 0 24px 4px 24px;
   visibility: hidden;
 }
@@ -211,15 +211,30 @@ textarea {
 
 /* Remove browser autofill background (Chrome/Safari/Edge) */
 input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
-select:-webkit-autofill {
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
   /* Overpaint the pale autofill background with transparent */
   -webkit-box-shadow: 0 0 0px 1000px transparent inset;
   box-shadow: 0 0 0px 1000px transparent inset;
-  -webkit-text-fill-color: $color-text-light;
+  -webkit-text-fill-color: $color-text-light !important;
+  color: $color-text-light !important;
+  font-size: $font-size-md !important;
   caret-color: $color-text-light;
   background-clip: padding-box;
   transition: background-color 9999s ease-out 0s; /* prevent flash */
+}
+
+input:-webkit-autofill::first-line,
+textarea:-webkit-autofill::first-line {
+  color: $color-text-light !important;
+  font-family: $font-family-base !important;
+  font-size: $font-size-md !important;
 }
 
 /* Firefox */
@@ -301,7 +316,7 @@ textarea:focus {
   }
 
   span {
-    font-size: 15px;
+    font-size: $font-size-base;
     color: $color-text-light;
   }
 }
@@ -388,11 +403,76 @@ textarea:focus {
   font-size: $font-size-sm;
   padding: 0 24px;
 }
-.form__notice.success {
-  color: #4caf50;
-}
+
 .form__notice.error {
   color: $color-accent;
+}
+
+.contact__overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 2000;
+  cursor: pointer;
+
+  &-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+  }
+
+  &-panel {
+    position: relative;
+    z-index: 1;
+    cursor: auto;
+    max-width: 480px;
+    width: clamp(280px, 80vw, 480px);
+    padding: 32px 40px;
+    border-radius: 24px;
+    background: rgba($color-bg, 0.92);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba($color-text-light, 0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &-message {
+    margin: 0;
+    font-size: $font-size-lg;
+    color: #bae011;
+    font-family: $font-family-base;
+    text-align: center;
+  }
+
+  &-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    padding: 4px;
+    font-size: 28px;
+    line-height: 1;
+    color: $color-text-light;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
+      color: $color-accent;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-accent;
+      outline-offset: 4px;
+    }
+  }
 }
 
 /* FOOTER */
@@ -665,6 +745,10 @@ textarea:focus {
       }
     }
   }
+  .form__error {
+    min-height: 64px; // reserviert Platz, damit die Form nicht springt
+  }
+
   .contact__form {
     max-width: 280px;
     margin: 0 auto;

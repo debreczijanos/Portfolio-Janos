@@ -61,6 +61,7 @@
     "ERROR_CONSENT_REQUIRED": "Bitte akzeptiere die Datenschutzerklärung",
     "SENDING": "Wird gesendet…",
     "SEND_SUCCESS": "Danke! Deine Nachricht wurde gesendet.",
+    "OVERLAY_CLOSE": "Hinweis schließen",
     "SEND_ERROR": "Entschuldigung, da ist etwas schiefgelaufen. Bitte später erneut versuchen."
   },
   "legal": {

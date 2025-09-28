@@ -16,6 +16,8 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   private observer?: IntersectionObserver;
   sending = false;
   submitted = false;
+  private overlayTimeoutId: ReturnType<typeof setTimeout> | null = null;
+  private overlayScrollLocked = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -35,7 +37,15 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
           Validators.pattern(/^[\p{L}]+(?:\s[\p{L}]+)*$/u),
         ],
       ],
-      email: ['', [Validators.required, Validators.email]],
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email,
+          // Require at least one dot in the domain so obviously invalid addresses get blocked client-side
+          Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/),
+        ],
+      ],
       message: ['', [Validators.required, Validators.minLength(14)]],
       consent: [false, [Validators.requiredTrue]],
       // Honeypot gegen Bots – muss leer bleiben
@@ -75,6 +85,11 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.observer?.disconnect();
+    if (this.overlayTimeoutId) {
+      clearTimeout(this.overlayTimeoutId);
+      this.overlayTimeoutId = null;
+    }
+    this.unlockBodyScroll();
   }
 
   onSubmit(): void {
@@ -98,7 +113,7 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe({
         next: () => {
           this.sending = false;
-          this.sent = true;
+          this.showSuccessOverlay();
           this.contactForm.reset({ name: '', email: '', message: '', consent: false, company: '' });
           this.submitted = false; // keine Fehlermeldungen nach erfolgreichem Versand anzeigen
         },
@@ -112,8 +127,42 @@ export class ContactComponent implements OnInit, AfterViewInit, OnDestroy {
   sent = false;
   sendError = false;
 
+  closeOverlay(): void {
+    if (this.overlayTimeoutId) {
+      clearTimeout(this.overlayTimeoutId);
+      this.overlayTimeoutId = null;
+    }
+    if (!this.sent) return;
+    this.sent = false;
+    this.unlockBodyScroll();
+  }
+
   isInvalid(controlName: 'name' | 'email' | 'message' | 'consent'): boolean {
     const c = this.contactForm.get(controlName);
     return !!c && c.invalid && (c.touched || this.submitted);
+  }
+
+  private showSuccessOverlay(): void {
+    this.sent = true;
+    this.lockBodyScroll();
+    if (this.overlayTimeoutId) {
+      clearTimeout(this.overlayTimeoutId);
+    }
+    this.overlayTimeoutId = setTimeout(() => {
+      this.overlayTimeoutId = null;
+      this.closeOverlay();
+    }, 6000);
+  }
+
+  private lockBodyScroll(): void {
+    if (!isPlatformBrowser(this.platformId) || this.overlayScrollLocked) return;
+    document.body.classList.add('contact-overlay-open');
+    this.overlayScrollLocked = true;
+  }
+
+  private unlockBodyScroll(): void {
+    if (!isPlatformBrowser(this.platformId) || !this.overlayScrollLocked) return;
+    document.body.classList.remove('contact-overlay-open');
+    this.overlayScrollLocked = false;
   }
 }

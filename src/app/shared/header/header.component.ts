@@ -16,9 +16,15 @@ export class HeaderComponent {
   solidHeader = false;
   isProjectRoute = false;
   menuOpen = false;
+  private readonly storageKey = 'portfolio.preferredLang';
 
   constructor(private translate: TranslateService, private router: Router) {
-    this.translate.setDefaultLang(this.currentLang);
+    const stored = this.getStoredLang();
+    if (stored) {
+      this.currentLang = stored;
+    }
+
+    this.translate.setDefaultLang('de');
     this.translate.use(this.currentLang);
 
     // Set initial header style based on current URL
@@ -35,13 +41,14 @@ export class HeaderComponent {
   }
 
   toggleLanguage() {
-    this.currentLang = this.currentLang === 'en' ? 'de' : 'en';
-    this.translate.use(this.currentLang);
+    const next = this.currentLang === 'en' ? 'de' : 'en';
+    this.setLanguage(next);
   }
 
   setLanguage(lang: 'en' | 'de') {
     this.currentLang = lang;
     this.translate.use(this.currentLang);
+    this.persistLang(lang);
   }
 
   private isTransparentRoute(url: string): boolean {
@@ -101,5 +108,24 @@ export class HeaderComponent {
       this.setLanguage(lang);
       this.hoveredLang = null;
     }, 180);
+  }
+
+  private getStoredLang(): 'en' | 'de' | null {
+    if (typeof window === 'undefined') return null;
+    try {
+      const lang = window.localStorage.getItem(this.storageKey);
+      return lang === 'en' || lang === 'de' ? lang : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private persistLang(lang: 'en' | 'de') {
+    if (typeof window === 'undefined') return;
+    try {
+      window.localStorage.setItem(this.storageKey, lang);
+    } catch {
+      // ignore storage errors (e.g., Safari private mode)
+    }
   }
 }

@@ -41,7 +41,7 @@
                 <div class="form__error" [class.show]="isInvalid('email')">
                     <ng-container *ngIf="contactForm.get('email')?.errors as e">
                         <span *ngIf="e['required']">{{ 'contact.ERROR_EMAIL_REQUIRED' | translate }}</span>
-                        <span *ngIf="e['email']">{{ 'contact.ERROR_EMAIL_FORMAT' | translate }}</span>
+                        <span *ngIf="e['email'] || e['pattern']">{{ 'contact.ERROR_EMAIL_FORMAT' | translate }}</span>
                     </ng-container>
                 </div>
             </div>
@@ -76,7 +76,6 @@
                 style="position:absolute; left:-9999px; opacity:0; height:0; width:0;" aria-hidden="true" />
 
             <div class="form__actions">
-                <p class="form__notice success" *ngIf="sent">{{ 'contact.SEND_SUCCESS' | translate }}</p>
                 <p class="form__notice error" *ngIf="sendError">{{ 'contact.SEND_ERROR' | translate }}</p>
                 <!-- Desktop scribble aligned with the button -->
                 <div class="contact__scribble-container contact__scribble-container--mobile">
@@ -86,6 +85,16 @@
                     ('contact.SENDING' | translate) : ('contact.SEND' | translate) }}</button>
             </div>
         </form>
+    </div>
+
+    <div class="contact__overlay" *ngIf="sent" (click)="closeOverlay()" role="dialog" aria-modal="true"
+        [attr.aria-labelledby]="'contact-success-message'">
+        <div class="contact__overlay-backdrop" aria-hidden="true"></div>
+        <div class="contact__overlay-panel" (click)="$event.stopPropagation()">
+            <button type="button" class="contact__overlay-close" (click)="closeOverlay()"
+                [attr.aria-label]="'contact.OVERLAY_CLOSE' | translate">&times;</button>
+            <p id="contact-success-message" class="contact__overlay-message" role="status" aria-live="assertive">{{ 'contact.SEND_SUCCESS' | translate }}</p>
+        </div>
     </div>
 
     <!-- FOOTER LINKS -->
